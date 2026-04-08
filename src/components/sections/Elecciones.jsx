@@ -3,6 +3,9 @@ import { FaVoteYea, FaUserTie, FaTrophy } from 'react-icons/fa'
 // IMPORTAR FOTOS REALES
 import fotoPersonero from '../../assets/images/ganadores/8.png'
 import fotoContralor from '../../assets/images/ganadores/9.png'
+import fotoAfadecPresi from '../../assets/images/ganadores/sivlen.jpg'
+import fotoVicepresidente from '../../assets/images/ganadores/juandaniel.jpg'
+import secretario from '../../assets/images/ganadores/katia.jpg'
 // Importar fotos AFADEC (cuando las tengas)
 /* import fotoPresidente from '../assets/images/ganadores/presidente-afadec.jpg'
 import fotoVicepresidente from '../assets/images/ganadores/vicepresidente-afadec.jpg'
@@ -31,20 +34,20 @@ const Elecciones = () => {
     },
     afadec: {
       presidente: {
-        nombre: "Por definir",
+        nombre: "Sliven Maria Vanegas",
         grado: "",
         lema: "",
-        foto: ""
+        foto: fotoAfadecPresi
       },
       vicepresidente: {
-        nombre: "Por definir",
+        nombre: "Juan Daniel Balcazar",
         grado: "",
-        foto: ""
+        foto: fotoVicepresidente
       },
       secretario: {
-        nombre: "Por definir",
+        nombre: "Katia Maestre",
         grado: "",
-        foto:""
+        foto:secretario
       }
     }
   }

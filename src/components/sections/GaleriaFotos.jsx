@@ -1,17 +1,22 @@
 import { Container, Row, Col, Modal, Image, Button } from 'react-bootstrap'
 import { useState } from 'react'
 import { FaCamera, FaInstagram } from 'react-icons/fa'
+import foto1 from '../../assets/images/mina.jpeg'
+import foto2 from  '../../assets/images/mina1.jpeg'
+import foto3 from  '../../assets/images/mina2.jpeg'
+import foto4 from  '../../assets/images/mina3.jpeg'
+import foto5 from  '../../assets/images/mina4.jpeg'
 
 const GaleriaFotos = () => {
   const [showModal, setShowModal] = useState(false)
   const [selectedImage, setSelectedImage] = useState(null)
 
   const fotos = [
-    { id: 1, src: 'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?w=600', titulo: 'Nuestra Granja', categoria: 'Proyectos' },
-    { id: 2, src: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600', titulo: 'Estudiantes en clase', categoria: 'Académico' },
-    { id: 3, src: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?w=600', titulo: 'Cultivos', categoria: 'Proyectos' },
-    { id: 4, src: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=600', titulo: 'Evento Cultural', categoria: 'Eventos' },
-    { id: 5, src: 'https://images.unsplash.com/photo-1586771107445-d3ca888129ff?w=600', titulo: 'Taller Práctico', categoria: 'Académico' },
+    { id: 1, src: foto1, titulo: 'Nuestra Granja', categoria: 'Proyectos' },
+    { id: 2, src: foto2, titulo: 'Estudiantes en clase', categoria: 'Académico' },
+    { id: 3, src: foto3, titulo: 'Cultivos', categoria: 'Proyectos' },
+    { id: 4, src: foto4, titulo: 'Evento Cultural', categoria: 'Eventos' },
+    { id: 5, src: foto5, titulo: 'Taller Práctico', categoria: 'Académico' },
     { id: 6, src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600', titulo: 'Día del Campesino', categoria: 'Eventos' },
   ]
 
