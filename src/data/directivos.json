@@ -1,0 +1,93 @@
+{
+  "pioneros": {
+    "comiteFundador": [
+      { "nombre": "Ignacio Medrano López", "cargo": "Presidente", "periodo": "1985-1986" },
+      { "nombre": "Yadira Elena Montero Zuleta", "cargo": "Vicepresidenta", "periodo": "1985-1986" },
+      { "nombre": "Tulio Rafael Pacheco", "cargo": "Secretario", "periodo": "1985-1986" },
+      { "nombre": "Faustino Ramírez", "cargo": "Tesorero", "periodo": "1985-1986" },
+      { "nombre": "Eudes Rodríguez", "cargo": "Fiscal", "periodo": "1985-1986" },
+      { "nombre": "Alcides Luquez", "cargo": "Fiscal", "periodo": "1985-1986" },
+      { "nombre": "Andrés Ortiz Murillo", "cargo": "Coordinador", "periodo": "1985-1986" },
+      { "nombre": "Ariel Pacheco Maestre", "cargo": "Coordinador", "periodo": "1985-1986" },
+      { "nombre": "Rafael Luquez Montero", "cargo": "Coordinador", "periodo": "1985-1986" }
+    ],
+    "exrectores": [
+      { 
+        "nombre": "Lic. José Domingo Martínez Soto", 
+        "periodo": "1986-1993",
+        "logros": "Fundador y primer rector. Logró la aprobación inicial del plantel y la primera promoción de bachilleres."
+      },
+      { 
+        "nombre": "Lic. Andrés Alirio Ortiz Murillo", 
+        "periodo": "1993-2024",
+        "logros": "Consolidó la institución, logró la municipalización, impulsó la Unidad Básica con escuelas rurales, gestionó infraestructura y recursos."
+      }
+    ],
+    "primerosDocentes": [
+      { "nombre": "Lenis Canales", "cargo": "Coordinadora", "periodo": "1986" },
+      { "nombre": "Rafael Luquez", "cargo": "Docente", "periodo": "1986" },
+      { "nombre": "Rosmiro Escalante", "cargo": "Docente", "periodo": "1986" }
+    ],
+    "primeraPromocion": {
+      "año": 1992,
+      "numeroEstudiantes": 14,
+      "estudiantes": [
+        "Juan Carlos Arias", "María Eugenia Carrascal", "Donaldo Maestre",
+        "José Enrique Maestre", "Eliecer Maestre", "Norma Irina Montero",
+        "Cristóbal Luquez", "Jorge Luquez", "Sandra Ramírez",
+        "Mariela Gómez", "Edinson Maestre", "Noris Medrano",
+        "Davinso Ramírez", "Alcides Luquez"
+      ]
+    }
+  },
+  "directivosActuales": {
+    "ultimaActualizacion": "2025-03-21",
+    "rector": {
+      "nombre": "Esp. Aquileo Aguilar Ortiz",
+      "cargo": "Rector",
+      "perfil": "Licenciado en Educación Básica Primaria, especialista en Gerencia Educativa. Ha sido coordinador y rector encargado en varias ocasiones, con amplia trayectoria en la institución.",
+      "telefono": "(605) 123 4567",
+      "email": "rectoria@ieagricolalamina.edu.co",
+      "inicioPeriodo": "2024",
+      "foto": "" 
+    },
+    "coordinadores": [
+      {
+        "nombre": "Lic. Enys Manjarrez Missath",
+        "cargo": "Coordinadora Académica",
+        "telefono": "(605) 123 4568",
+        "email": "coordinacion.academica@ieagricolalamina.edu.co"
+      },
+      {
+        "nombre": "Lic. Hugo Martínez Córdoba",
+        "cargo": "Coordinador de Disciplina",
+        "telefono": "(605) 123 4569",
+        "email": "coordinacion.disciplina@ieagricolalamina.edu.co"
+      }
+    ],
+    "orientacion": {
+      "nombre": "Lic. Sandra Ramírez Luquez",
+      "cargo": "Orientadora Escolar",
+      "telefono": "(605) 123 4570",
+      "email": "orientacion@ieagricolalamina.edu.co"
+    },
+    "consejoDirectivo": [
+      { "nombre": "Esp. Aquileo Aguilar Ortiz", "cargo": "Rector - Presidente" },
+      { "nombre": "Lic. Enys Manjarrez Missath", "cargo": "Representante Docente" },
+      { "nombre": "Lic. Francisco Martínez Ochoa", "cargo": "Representante Docente" },
+      { "nombre": "Ariel Francisco Pacheco Maestre", "cargo": "Representante Padres de Familia" },
+      { "nombre": "Sixto Rodríguez Luquez", "cargo": "Representante Padres de Familia" },
+      { "nombre": "Estudiante por definir", "cargo": "Representante Estudiantil" },
+      { "nombre": "Norma Irina Montero", "cargo": "Representante Exalumnos" }
+    ],
+    "personero": {
+      "nombre": "Por definir en elecciones 2025",
+      "periodo": "2025"
+    },
+    "presidentePadres": {
+      "nombre": "Ariel Francisco Pacheco Maestre",
+      "periodo": "2024-2025",
+      "contacto": "310 123 4567"
+    }
+  }
+}

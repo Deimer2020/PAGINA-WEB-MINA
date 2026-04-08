@@ -1,0 +1,144 @@
+/* Importar fuentes elegantes */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&display=swap');
+
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Títulos con Playfair Display - Elegante y premium */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3.5rem;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 2.5rem;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+/* Texto normal con Lato - Moderno y legible */
+p, a, li, span, small, .lead {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.01em;
+}
+
+.lead {
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Botones elegantes */
+.btn {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 30px;
+  padding: 12px 32px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.btn-success {
+  background-color: #2E7D32;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #1B5E20;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.3);
+}
+
+.btn-outline-success {
+  border: 2px solid #2E7D32;
+  color: #2E7D32;
+  background: transparent;
+}
+
+.btn-outline-success:hover {
+  background-color: #2E7D32;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.2);
+}
+
+/* Tarjetas con estilo elegante */
+.card {
+  border: none;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #2E7D32;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Estilo para el carrusel */
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+}
+
+/* Secciones */
+section {
+  padding: 80px 0;
+}
+/* Agrega esto a tu index.css para mejorar la experiencia */
+html {
+  scroll-behavior: smooth;
+}
