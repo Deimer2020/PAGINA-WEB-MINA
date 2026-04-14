@@ -13,6 +13,7 @@ import NuestraBanda from './components/sections/NuestraBanda'
 import Elecciones from './components/sections/Elecciones'
 import GobiernoEscolar from './components/pages/GobiernoEscolar'
 import Perfiles from './components/pages/Perfiles'
+import SitiosInteres from './components/sections/SitiosInteres'
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +29,7 @@ function App() {
               <AFADEC />
               <NuestraBanda />
               <Programs />
+              <SitiosInteres></SitiosInteres>
               <Values />
 
             </>

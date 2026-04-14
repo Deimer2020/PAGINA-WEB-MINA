@@ -216,78 +216,119 @@ const UltimasNovedades = () => {
           }} />
         </h2>
         
-        <Row className="g-4">
-          {novedades.map((novedad) => (
-            <Col md={4} key={novedad.id}>
-              <Card className="h-100 border-0 shadow-lg rounded-4 overflow-hidden" style={{
-                transition: 'all 0.3s ease',
-                cursor: 'pointer',
-                border: novedad.destacado ? `2px solid ${novedad.color}` : 'none'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-10px)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
-                <div style={{ position: 'relative', height: '200px', overflow: 'hidden', backgroundColor: '#f0f0f0' }}>
-                  <img 
-                    src={novedad.imagen} 
-                    alt={novedad.imagenAlt}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
-                    onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.08)'}
-                    onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                  />
-                  <Badge style={{
-                    position: 'absolute',
-                    top: '15px',
-                    left: '15px',
-                    backgroundColor: novedad.color,
-                    padding: '6px 12px',
-                    borderRadius: '20px',
-                    fontSize: '0.75rem',
-                    fontWeight: 'bold'
-                  }}>
-                    {novedad.destacado ? '🔥 Destacado' : '📰 Novedad'}
-                  </Badge>
-                </div>
-                <Card.Body>
-                  <div className="d-flex align-items-center mb-3">
-                    <div style={{
-                      width: '40px',
-                      height: '40px',
-                      background: `${novedad.color}20`,
-                      borderRadius: '10px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginRight: '12px'
-                    }}>
-                      <span style={{ fontSize: '1.2rem', color: novedad.color }}>{novedad.icono}</span>
-                    </div>
-                    <div>
-                      <small className="text-muted">{novedad.fecha}</small>
-                      <h5 className="mb-0" style={{ color: '#2E7D32', fontWeight: 'bold', fontSize: '1rem' }}>
-                        {novedad.titulo}
-                      </h5>
-                    </div>
-                  </div>
-                  <p className="text-muted" style={{ lineHeight: '1.5', fontSize: '0.9rem' }}>
-                    {novedad.descripcion}
-                  </p>
-                  <Button 
-                    variant="link" 
-                    className="ps-0 text-success fw-bold" 
-                    style={{ textDecoration: 'none', fontSize: '0.9rem' }}
-                    onClick={() => {
-                      if (novedad.modalTipo === "elecciones") setShowEleccionesModal(true)
-                      else if (novedad.modalTipo === "feria") setShowFeriaModal(true)
-                      else if (novedad.modalTipo === "concurso") setShowConcursoModal(true)
-                    }}
-                  >
-                    Leer más →
-                  </Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+        {/* ==================== TARJETAS MEJORADAS VISUALMENTE ==================== */}
+
+<Row className="g-4">
+  {novedades.map((novedad) => (
+    <Col md={4} key={novedad.id}>
+      <Card className="h-100 border-0 rounded-4 overflow-hidden" style={{
+        transition: 'all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1)',
+        cursor: 'pointer',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+        background: 'white',
+        border: '1px solid rgba(0,0,0,0.05)'
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'scale(1.02)'
+        e.currentTarget.style.boxShadow = '0 20px 35px rgba(0,0,0,0.1)'
+        e.currentTarget.style.borderColor = novedad.color
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'scale(1)'
+        e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)'
+        e.currentTarget.style.borderColor = 'rgba(0,0,0,0.05)'
+      }}>
+        
+        {/* Borde superior colorido */}
+        <div style={{ height: '3px', background: novedad.color }} />
+        
+        {/* Imagen con efecto de escala al hover */}
+        <div style={{ position: 'relative', height: '200px', overflow: 'hidden', backgroundColor: '#f8f9fa' }}>
+          <img 
+            src={novedad.imagen} 
+            alt={novedad.imagenAlt}
+            style={{ 
+              width: '100%', 
+              height: '100%', 
+              objectFit: 'cover', 
+              transition: 'transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1)' 
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+          />
+          <Badge style={{
+            position: 'absolute',
+            top: '12px',
+            left: '12px',
+            backgroundColor: novedad.color,
+            padding: '4px 12px',
+            borderRadius: '20px',
+            fontSize: '0.7rem',
+            fontWeight: '500',
+            letterSpacing: '0.3px'
+          }}>
+            {novedad.destacado ? 'Destacado' : 'Novedad'}
+          </Badge>
+        </div>
+        
+        <Card.Body className="p-4">
+          <div className="d-flex align-items-center mb-3">
+            <div style={{
+              width: '40px',
+              height: '40px',
+              background: `${novedad.color}10`,
+              borderRadius: '10px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginRight: '12px'
+            }}>
+              <span style={{ fontSize: '1.2rem', color: novedad.color }}>{novedad.icono}</span>
+            </div>
+            <div>
+              <small className="text-muted" style={{ fontSize: '0.7rem' }}>{novedad.fecha}</small>
+              <h6 className="mb-0" style={{ color: '#2E7D32', fontWeight: '600', fontSize: '0.95rem' }}>
+                {novedad.titulo}
+              </h6>
+            </div>
+          </div>
+          
+          <p className="text-muted" style={{ lineHeight: '1.5', fontSize: '0.85rem', marginBottom: '1rem' }}>
+            {novedad.descripcion}
+          </p>
+          
+          <Button 
+            variant="link" 
+            className="ps-0" 
+            style={{ 
+              textDecoration: 'none', 
+              fontSize: '0.8rem',
+              color: novedad.color,
+              fontWeight: '500',
+              transition: 'all 0.2s ease'
+            }}
+            onClick={() => {
+              if (novedad.modalTipo === "elecciones") setShowEleccionesModal(true)
+              else if (novedad.modalTipo === "feria") setShowFeriaModal(true)
+              else if (novedad.modalTipo === "concurso") setShowConcursoModal(true)
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateX(3px)'
+              e.currentTarget.style.color = '#1B5E20'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateX(0)'
+              e.currentTarget.style.color = novedad.color
+            }}
+          >
+            Leer más →
+          </Button>
+        </Card.Body>
+      </Card>
+    </Col>
+  ))}
+</Row>
+        {/* ==================== FIN TARJETAS ==================== */}
         
         <div className="text-center mt-5">
           <Button variant="outline-success" size="lg" className="px-5">
@@ -401,65 +442,63 @@ const UltimasNovedades = () => {
                 </Row>
               </div>
 
-              {/* Ganadores */}
-            {/* Ganadores con fotos */}
-<h4 className="mt-4 mb-3" style={{ color: '#2E7D32', fontFamily: "'Playfair Display', serif" }}>
-  🏆 Ganadores de las Elecciones 2026
-</h4>
-<Row className="mb-4">
-  {/* Personero */}
-  <Col md={6}>
-    <div className="p-3 bg-light rounded-3 text-center h-100">
-      <div style={{
-        width: '120px',
-        height: '120px',
-        margin: '0 auto 15px',
-        borderRadius: '50%',
-        overflow: 'hidden',
-        border: '3px solid #2E7D32',
-        boxShadow: '0 5px 15px rgba(0,0,0,0.2)'
-      }}>
-        <img 
-          src={novedadElecciones.modalContent.ganadores.personero.foto} 
-          alt={novedadElecciones.modalContent.ganadores.personero.nombre}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        />
-      </div>
-      <h5 className="mb-1">{novedadElecciones.modalContent.ganadores.personero.nombre}</h5>
-      <p className="text-muted mb-1">Personero Estudiantil - {novedadElecciones.modalContent.ganadores.personero.grado}</p>
-      <Badge bg="success" className="mb-2">🏆 {novedadElecciones.modalContent.ganadores.personero.votos} votos</Badge>
-      <p className="fst-italic mt-2">"{novedadElecciones.modalContent.ganadores.personero.lema}"</p>
-      <small className="text-muted">{novedadElecciones.modalContent.ganadores.personero.propuestas}</small>
-    </div>
-  </Col>
-  
-  {/* Contralor */}
-  <Col md={6}>
-    <div className="p-3 bg-light rounded-3 text-center h-100">
-      <div style={{
-        width: '120px',
-        height: '120px',
-        margin: '0 auto 15px',
-        borderRadius: '50%',
-        overflow: 'hidden',
-        border: '3px solid #2E7D32',
-        boxShadow: '0 5px 15px rgba(0,0,0,0.2)'
-      }}>
-        <img 
-          src={novedadElecciones.modalContent.ganadores.contralor.foto} 
-          alt={novedadElecciones.modalContent.ganadores.contralor.nombre}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        />
-      </div>
-      <h5 className="mb-1">{novedadElecciones.modalContent.ganadores.contralor.nombre}</h5>
-      <p className="text-muted mb-1">Contralor Estudiantil - {novedadElecciones.modalContent.ganadores.contralor.grado}</p>
-      <Badge bg="success" className="mb-2">🏆 {novedadElecciones.modalContent.ganadores.contralor.votos} votos</Badge>
-      <p className="fst-italic mt-2">"{novedadElecciones.modalContent.ganadores.contralor.lema}"</p>
-      <small className="text-muted">{novedadElecciones.modalContent.ganadores.contralor.propuestas}</small>
-    </div>
-  </Col>
-</Row>
-              
+              {/* Ganadores con fotos */}
+              <h4 className="mt-4 mb-3" style={{ color: '#2E7D32', fontFamily: "'Playfair Display', serif" }}>
+                🏆 Ganadores de las Elecciones 2026
+              </h4>
+              <Row className="mb-4">
+                {/* Personero */}
+                <Col md={6}>
+                  <div className="p-3 bg-light rounded-3 text-center h-100">
+                    <div style={{
+                      width: '120px',
+                      height: '120px',
+                      margin: '0 auto 15px',
+                      borderRadius: '50%',
+                      overflow: 'hidden',
+                      border: '3px solid #2E7D32',
+                      boxShadow: '0 5px 15px rgba(0,0,0,0.2)'
+                    }}>
+                      <img 
+                        src={novedadElecciones.modalContent.ganadores.personero.foto} 
+                        alt={novedadElecciones.modalContent.ganadores.personero.nombre}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                    </div>
+                    <h5 className="mb-1">{novedadElecciones.modalContent.ganadores.personero.nombre}</h5>
+                    <p className="text-muted mb-1">Personero Estudiantil - {novedadElecciones.modalContent.ganadores.personero.grado}</p>
+                    <Badge bg="success" className="mb-2">🏆 {novedadElecciones.modalContent.ganadores.personero.votos} votos</Badge>
+                    <p className="fst-italic mt-2">"{novedadElecciones.modalContent.ganadores.personero.lema}"</p>
+                    <small className="text-muted">{novedadElecciones.modalContent.ganadores.personero.propuestas}</small>
+                  </div>
+                </Col>
+                
+                {/* Contralor */}
+                <Col md={6}>
+                  <div className="p-3 bg-light rounded-3 text-center h-100">
+                    <div style={{
+                      width: '120px',
+                      height: '120px',
+                      margin: '0 auto 15px',
+                      borderRadius: '50%',
+                      overflow: 'hidden',
+                      border: '3px solid #2E7D32',
+                      boxShadow: '0 5px 15px rgba(0,0,0,0.2)'
+                    }}>
+                      <img 
+                        src={novedadElecciones.modalContent.ganadores.contralor.foto} 
+                        alt={novedadElecciones.modalContent.ganadores.contralor.nombre}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                    </div>
+                    <h5 className="mb-1">{novedadElecciones.modalContent.ganadores.contralor.nombre}</h5>
+                    <p className="text-muted mb-1">Contralor Estudiantil - {novedadElecciones.modalContent.ganadores.contralor.grado}</p>
+                    <Badge bg="success" className="mb-2">🏆 {novedadElecciones.modalContent.ganadores.contralor.votos} votos</Badge>
+                    <p className="fst-italic mt-2">"{novedadElecciones.modalContent.ganadores.contralor.lema}"</p>
+                    <small className="text-muted">{novedadElecciones.modalContent.ganadores.contralor.propuestas}</small>
+                  </div>
+                </Col>
+              </Row>
 
               {/* Galería de fotos */}
               {novedadElecciones.modalContent.galeria?.imagenes && (
