@@ -13,16 +13,11 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
-      
-      // Cambiar color del navbar
       setScrolled(currentScrollY > 50)
       
-      // Ocultar/mostrar navbar al hacer scroll (solo después de 100px)
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scroll hacia abajo - ocultar navbar
         setHidden(true)
       } else if (currentScrollY < lastScrollY) {
-        // Scroll hacia arriba - mostrar navbar
         setHidden(false)
       }
       
@@ -33,11 +28,10 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [lastScrollY])
 
-  // Función para desplazamiento suave a una sección
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId)
     if (section) {
-      const offset = 70
+      const offset = 80
       const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset
       window.scrollTo({
         top: sectionPosition - offset,
@@ -46,7 +40,6 @@ const Navbar = () => {
     }
   }
 
-  // Manejar clic en enlaces de la página principal
   const handleHomeLinkClick = (e, sectionId) => {
     e.preventDefault()
     if (location.pathname !== '/') {
@@ -64,140 +57,216 @@ const Navbar = () => {
       expand="lg" 
       fixed="top" 
       style={{ 
-        backgroundColor: scrolled ? 'white' : 'transparent',
-        transition: 'all 0.3s ease',
-        boxShadow: scrolled ? '0 2px 10px rgba(0,0,0,0.1)' : 'none',
-        padding: scrolled ? '8px 0' : '12px 0',
+        backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.98)' : 'rgba(255, 255, 255, 0.95)',
+        backdropFilter: 'blur(10px)',
+        transition: 'all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1)',
+        boxShadow: scrolled 
+          ? '0 8px 25px rgba(0,0,0,0.12)' 
+          : '0 6px 20px rgba(0,0,0,0.08)',
+        padding: scrolled ? '8px 0' : '16px 0',
         transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
-        zIndex: 1000
+        zIndex: 1000,
+        borderBottom: '1px solid rgba(0,0,0,0.04)',
+        borderBottomLeftRadius: '24px',
+        borderBottomRightRadius: '24px'
       }}
     >
-      <Container>
-        <Link to="/" style={{ textDecoration: 'none' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}>
-            <div style={{
-              backgroundColor: scrolled ? 'transparent' : 'rgba(255,255,255,0.15)',
-              borderRadius: '50%',
-              padding: '5px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
+      <Container style={{ maxWidth: '1280px', margin: '0 auto' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+          <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <img 
                 src={escudo} 
                 alt="Escudo Institucional" 
                 style={{ 
-                  height: '50px', 
-                  width: '50px',
-                  filter: scrolled ? 'none' : 'brightness(0) invert(1)',
-                  transition: 'filter 0.3s ease'
+                  height: scrolled ? '42px' : '48px', 
+                  width: 'auto',
+                  transition: 'all 0.3s ease'
                 }}
               />
+              <div>
+                <span style={{ 
+                  color: '#2E7D32', 
+                  fontWeight: '700', 
+                  fontSize: scrolled ? '0.9rem' : '1rem',
+                  display: 'block',
+                  lineHeight: '1.2',
+                  transition: 'all 0.3s ease',
+                  fontFamily: "'Playfair Display', 'Georgia', serif",
+                  letterSpacing: '-0.5px'
+                }}>
+                  I.E. Agrícola La Mina
+                </span>
+                <small style={{ 
+                  color: '#666', 
+                  fontSize: '0.6rem',
+                  display: 'block',
+                  fontFamily: "'Lato', sans-serif",
+                  fontWeight: '400',
+                  transition: 'all 0.3s ease'
+                }}>
+                  Formar y Educar
+                </small>
+              </div>
             </div>
-            <div>
-              <span style={{ 
-                color: scrolled ? '#2E7D32' : 'white', 
-                fontWeight: '600', 
-                fontSize: scrolled ? '1.1rem' : '1rem',
-                display: 'block',
-                lineHeight: '1.2',
-                transition: 'color 0.3s ease',
-                fontFamily: "'Playfair Display', 'Georgia', serif",
-                letterSpacing: '-0.01em'
-              }}>
-                INSTITUCION EDUCATIVA AGRICOLA LA MINA
-              </span>
-              <small style={{ 
-                color: scrolled ? '#666' : 'rgba(255,255,255,0.9)', 
-                fontSize: '0.65rem',
-                display: 'block',
-                transition: 'color 0.3s ease',
-                fontFamily: "'Lato', sans-serif",
-                fontWeight: '400',
-                letterSpacing: '0.02em'
-              }}>
-                Formar y Educar
-              </small>
-            </div>
-          </div>
-        </Link>
-        
-        <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
-        
-        <BootstrapNavbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            {/* Inicio - va a la página principal */}
-            <Nav.Link 
-              as={Link}
-              to="/"
-              style={{ 
-                color: scrolled ? '#333' : 'white', 
-                fontWeight: '500', 
-                transition: 'color 0.3s ease',
-                fontFamily: "'Lato', sans-serif",
-                fontSize: '0.9rem',
-                margin: '0 5px',
-                cursor: 'pointer',
-                textDecoration: 'none'
-              }}>
-              Inicio
-            </Nav.Link>
-            
-            {/* Nosotros - va a la página independiente */}
-            <Nav.Link 
-              as={Link}
-              to="/nosotros"
-              style={{ 
-                color: scrolled ? '#333' : 'white', 
-                fontWeight: '500', 
-                transition: 'color 0.3s ease',
-                fontFamily: "'Lato', sans-serif",
-                fontSize: '0.9rem',
-                margin: '0 5px',
-                cursor: 'pointer',
-                textDecoration: 'none'
-              }}>
-              Nosotros
-            </Nav.Link>
-            <Nav.Link 
-              as={Link}
-              to="/gobierno-escolar"
-              style={{ 
-                color: scrolled ? '#333' : 'white', 
-                fontWeight: '500', 
-                transition: 'color 0.3s ease',
-                fontFamily: "'Lato', sans-serif",
-                fontSize: '0.9rem',
-                margin: '0 5px',
-                cursor: 'pointer',
-                textDecoration: 'none'
-              }}>
-              Gobierno Escolar
-            </Nav.Link>
-            
-             <Nav.Link 
-              as={Link}
-              to="/perfiles"
-              style={{ 
-                color: scrolled ? '#333' : 'white', 
-                fontWeight: '500', 
-                transition: 'color 0.3s ease',
-                fontFamily: "'Lato', sans-serif",
-                fontSize: '0.9rem',
-                margin: '0 5px',
-                cursor: 'pointer',
-                textDecoration: 'none'
-              }}>
-              Perfiles
-            </Nav.Link>
-           
-            
+          </Link>
           
-            
-            
-          </Nav>
-        </BootstrapNavbar.Collapse>
+          <BootstrapNavbar.Toggle 
+            aria-controls="basic-navbar-nav"
+            style={{
+              border: 'none',
+              backgroundColor: 'rgba(46,125,50,0.1)',
+              borderRadius: '12px',
+              padding: '8px 12px'
+            }}
+          />
+          
+          <BootstrapNavbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto" style={{ gap: '4px', alignItems: 'center' }}>
+              <Nav.Link 
+                as={Link}
+                to="/"
+                style={{ 
+                  color: '#333', 
+                  fontWeight: '500', 
+                  transition: 'all 0.3s ease',
+                  fontFamily: "'Inter', 'Lato', sans-serif",
+                  fontSize: '0.85rem',
+                  padding: '8px 18px',
+                  borderRadius: '30px',
+                  margin: 0,
+                  cursor: 'pointer',
+                  textDecoration: 'none',
+                  position: 'relative'
+                }}
+                className="nav-link-moderno"
+              >
+                Inicio
+              </Nav.Link>
+              
+              <Nav.Link 
+                as={Link}
+                to="/nosotros"
+                style={{ 
+                  color: '#333', 
+                  fontWeight: '500', 
+                  transition: 'all 0.3s ease',
+                  fontFamily: "'Inter', 'Lato', sans-serif",
+                  fontSize: '0.85rem',
+                  padding: '8px 18px',
+                  borderRadius: '30px',
+                  margin: 0,
+                  cursor: 'pointer',
+                  textDecoration: 'none',
+                  position: 'relative'
+                }}
+                className="nav-link-moderno"
+              >
+                Nosotros
+              </Nav.Link>
+              
+              <Nav.Link 
+                as={Link}
+                to="/gobierno-escolar"
+                style={{ 
+                  color: '#333', 
+                  fontWeight: '500', 
+                  transition: 'all 0.3s ease',
+                  fontFamily: "'Inter', 'Lato', sans-serif",
+                  fontSize: '0.85rem',
+                  padding: '8px 18px',
+                  borderRadius: '30px',
+                  margin: 0,
+                  cursor: 'pointer',
+                  textDecoration: 'none',
+                  position: 'relative'
+                }}
+                className="nav-link-moderno"
+              >
+                Gobierno Escolar
+              </Nav.Link>
+              
+              <Nav.Link 
+                as={Link}
+                to="/perfiles"
+                style={{ 
+                  color: '#333', 
+                  fontWeight: '500', 
+                  transition: 'all 0.3s ease',
+                  fontFamily: "'Inter', 'Lato', sans-serif",
+                  fontSize: '0.85rem',
+                  padding: '8px 18px',
+                  borderRadius: '30px',
+                  margin: 0,
+                  cursor: 'pointer',
+                  textDecoration: 'none',
+                  position: 'relative'
+                }}
+                className="nav-link-moderno"
+              >
+                Perfiles
+              </Nav.Link>
+            </Nav>
+          </BootstrapNavbar.Collapse>
+        </div>
       </Container>
+
+      <style>{`
+        .nav-link-moderno {
+          transition: all 0.3s ease;
+        }
+        
+        .nav-link-moderno::after {
+          content: '';
+          position: absolute;
+          bottom: 4px;
+          left: 50%;
+          width: 0;
+          height: 2px;
+          background: linear-gradient(90deg, #2E7D32, #4CAF50);
+          transition: all 0.3s ease;
+          transform: translateX(-50%);
+          border-radius: 2px;
+        }
+        
+        .nav-link-moderno:hover::after {
+          width: calc(100% - 36px);
+        }
+        
+        .nav-link-moderno:hover {
+          color: #2E7D32 !important;
+          background-color: rgba(46,125,50,0.05);
+          transform: translateY(-1px);
+        }
+        
+        .navbar-toggler:focus {
+          box-shadow: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+          .navbar-collapse {
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+          }
+          
+          .nav-link-moderno {
+            text-align: center;
+            padding: 10px 18px !important;
+          }
+          
+          .nav-link-moderno::after {
+            bottom: 6px;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .navbar-brand img {
+            height: 38px !important;
+          }
+        }
+      `}</style>
     </BootstrapNavbar>
   )
 }

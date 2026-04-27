@@ -1,5 +1,9 @@
-// src/components/sections/HeroCarousel.jsx
-import { Carousel, Button } from 'react-bootstrap'
+// src/components/sections/HeroCarouselModerno.jsx
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules'
+import { Button } from 'react-bootstrap'
+
+// Importar imágenes locales
 import ita from '../../assets/images/ita.jpeg'
 import ita1 from '../../assets/images/ita1.jpeg'
 import ita2 from '../../assets/images/ita2.jpeg'
@@ -7,228 +11,278 @@ import ita3 from '../../assets/images/ita3.jpeg'
 import ita4 from '../../assets/images/ita4.jpeg'
 import ita5 from '../../assets/images/ita5.jpeg'
 
+import 'swiper/css'
+import 'swiper/css/effect-coverflow'
+import 'swiper/css/pagination'
+
 const HeroCarousel = () => {
   const slides = [
     {
-      src: ita,
+      imagen: ita,
       titulo: 'INSTITUCIÓN EDUCATIVA AGRÍCOLA LA MINA',
-      subtitulo: 'Formar y Educar',
-      modalidad: 'Presencial',
-      badge: '🌟 Institucional',
-      descripcion: 'Formando líderes del campo con innovación y tradición',
-      buttonText: 'CONOCE MÁS',
-      textoInferior: 'Educación de calidad'
+      subtitulo: 'Formando líderes del campo con innovación y tradición',
+      boton: 'CONOCE MÁS',
+      color: '#2E7D32'
     },
     {
-      src: ita1,
-    
+      imagen: ita1,
+      titulo: 'Educación de Calidad',
+      subtitulo: 'Aprendizaje práctico en cultivos sostenibles',
+      boton: 'VER PROGRAMAS',
+      color: '#FF9800'
     },
     {
-      src: ita2,
-      
+      imagen: ita2,
+      titulo: 'Innovación Rural',
+      subtitulo: 'Tecnología aplicada al campo colombiano',
+      boton: 'DESCUBRE MÁS',
+      color: '#2196F3'
     },
     {
-      src: ita3,
-     
+      imagen: ita3,
+      titulo: 'Compromiso con el Campo',
+      subtitulo: 'Formamos líderes que transforman su entorno',
+      boton: 'CONÓCENOS',
+      color: '#9C27B0'
     },
     {
-      src: ita4,
-    
+      imagen: ita4,
+      titulo: 'Proyectos Productivos',
+      subtitulo: 'Aprendizaje práctico en agricultura moderna',
+      boton: 'VER PROYECTOS',
+      color: '#E91E63'
     },
     {
-      src: ita5,
-     
+      imagen: ita5,
+      titulo: 'Futuro Sostenible',
+      subtitulo: 'Tecnología e innovación para el campo',
+      boton: 'DESCUBRE MÁS',
+      color: '#00BCD4'
     }
   ]
 
   return (
-    <div style={{ marginTop: '-76px' }}>
-      <Carousel 
-        interval={5000}
-        pause={false}
-        className="hero-carousel-moderno"
-        indicators={true}
-        controls={true}
-      >
-        {slides.map((slide, index) => (
-          <Carousel.Item key={index}>
-            <div style={{
-              position: 'relative',
-              height: '100vh',
-              width: '100%',
-              backgroundImage: `url(${slide.src})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}>
-              {/* Overlay oscuro */}
-              <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                background: 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.75))'
-              }} />
-              
-              {/* Contenido centrado verticalmente */}
-              <div style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: '100%',
-                maxWidth: '600px',
-                padding: '0 20px',
-                textAlign: 'center',
-                zIndex: 2
-              }}>
-                {/* Badge superior (esquina superior del contenido) */}
-                <div className="mb-3">
-                  <span style={{
-                    display: 'inline-block',
-                    backgroundColor: 'rgba(255,255,255,0.15)',
-                    backdropFilter: 'blur(8px)',
-                    padding: '6px 18px',
-                    borderRadius: '30px',
-                    fontSize: '0.75rem',
-                    fontWeight: '500',
-                    color: 'white'
+    <div style={{ 
+      position: 'relative', 
+      overflow: 'hidden',
+      background:'linear-gradient(135deg, #223628 0%, #085034 100%)', 
+      padding: '20px 0 50px 0',
+      marginTop: '0px'  
+    }}>
+     
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        position: 'relative',
+        zIndex: 2,
+        paddingTop: '30px'
+      }}>
+        <div style={{ width: '100%', maxWidth: '1400px', margin: '0 auto' }}>
+          <Swiper
+            modules={[EffectCoverflow, Pagination, Autoplay]}
+            effect="coverflow"
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView="auto"
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: false,
+            }}
+            pagination={{ clickable: true, dynamicBullets: true }}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            loop={true}
+            breakpoints={{
+              320: { slidesPerView: 1, spaceBetween: 20, centeredSlides: true },
+              768: { slidesPerView: 1.5, spaceBetween: 25, centeredSlides: true },
+              1024: { slidesPerView: 2.2, spaceBetween: 30, centeredSlides: true },
+              1280: { slidesPerView: 2.5, spaceBetween: 35, centeredSlides: true }
+            }}
+            className="hero-carousel-moderno"
+            style={{ padding: '20px 0 50px 0' }}
+          >
+            {slides.map((slide, index) => (
+              <SwiperSlide key={index} style={{ width: '480px', maxWidth: '75vw' }}>
+                <div className="card-slide" style={{
+                  position: 'relative',
+                  height: '480px',
+                  borderRadius: '20px',
+                  overflow: 'hidden',
+                  boxShadow: '0 15px 30px rgba(0,0,0,0.12)',
+                  transition: 'all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)',
+                  cursor: 'pointer',
+                  backgroundColor: 'white'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-6px)'
+                  e.currentTarget.style.boxShadow = '0 25px 40px rgba(0,0,0,0.15)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.boxShadow = '0 15px 30px rgba(0,0,0,0.12)'
+                }}>
+                  {/* Imagen de fondo */}
+                  <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundImage: `url(${slide.imagen})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    transition: 'transform 0.6s ease'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.08)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'} />
+                  
+                  {/* Overlay suave */}
+                  <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: 'linear-gradient(135deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 100%)'
+                  }} />
+                  
+                  {/* Contenido */}
+                  <div style={{
+                    position: 'absolute',
+                    bottom: '10%',
+                    left: 0,
+                    right: 0,
+                    padding: '25px 30px',
+                    textAlign: 'center',
+                    color: 'white',
+                    zIndex: 2
                   }}>
-                    {slide.badge}
-                  </span>
+                    <div style={{
+                      display: 'inline-block',
+                      width: '50px',
+                      height: '3px',
+                      backgroundColor: slide.color,
+                      marginBottom: '15px',
+                      borderRadius: '3px'
+                    }} />
+                    
+                    <h3 style={{
+                      fontFamily: "'Playfair Display', serif",
+                      fontSize: '1.4rem',
+                      fontWeight: '700',
+                      marginBottom: '10px',
+                      textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+                      lineHeight: '1.3'
+                    }}>
+                      {slide.titulo}
+                    </h3>
+                    
+                    <p style={{
+                      fontSize: '0.85rem',
+                      opacity: 0.95,
+                      marginBottom: '20px',
+                      maxWidth: '90%',
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                      lineHeight: '1.4'
+                    }}>
+                      {slide.subtitulo}
+                    </p>
+                    
+                    <Button
+                      variant="outline-light"
+                      size="sm"
+                      style={{
+                        borderRadius: '50px',
+                        padding: '7px 24px',
+                        fontSize: '0.75rem',
+                        fontWeight: '600',
+                        letterSpacing: '0.5px',
+                        transition: 'all 0.3s ease',
+                        borderWidth: '1.5px',
+                        backdropFilter: 'blur(4px)'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = slide.color
+                        e.currentTarget.style.borderColor = slide.color
+                        e.currentTarget.style.transform = 'translateY(-2px)'
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = 'transparent'
+                        e.currentTarget.style.borderColor = 'white'
+                        e.currentTarget.style.transform = 'translateY(0)'
+                      }}
+                    >
+                      {slide.boton}
+                    </Button>
+                  </div>
                 </div>
-                
-                {/* Título principal */}
-                <h1 className="text-white fw-bold mb-2" style={{
-                  fontSize: '2.2rem',
-                  fontFamily: "'Playfair Display', serif",
-                  textShadow: '1px 1px 2px rgba(0,0,0,0.3)'
-                }}>
-                  {slide.titulo}
-                </h1>
-                
-                {/* Subtítulo (solo para la primera diapositiva) */}
-                {slide.subtitulo && (
-                  <p className="text-white mb-3" style={{
-                    fontSize: '1.1rem',
-                    opacity: 0.9,
-                    fontStyle: 'italic'
-                  }}>
-                    {slide.subtitulo}
-                  </p>
-                )}
-                
-                {/* Badge de modalidad (debajo del título, como en la imagen) */}
-                <div className="mb-3">
-                  <span style={{
-                    display: 'inline-block',
-                    backgroundColor: 'rgba(0,0,0,0.6)',
-                    backdropFilter: 'blur(4px)',
-                    padding: '5px 14px',
-                    borderRadius: '30px',
-                    fontSize: '0.7rem',
-                    fontWeight: '500',
-                    color: 'white'
-                  }}>
-                    {slide.modalidad}
-                  </span>
-                </div>
-                
-                {/* Descripción */}
-                <p className="text-white mb-4" style={{
-                  fontSize: '0.9rem',
-                  opacity: 0.9,
-                  maxWidth: '450px',
-                  margin: '0 auto'
-                }}>
-                  {slide.descripcion}
-                </p>
-                
-                {/* Botón */}
-                <Button 
-                  className="rounded-pill px-5 py-2 fw-semibold mb-3"
-                  style={{
-                    backgroundColor: 'white',
-                    color: '#2E7D32',
-                    border: 'none',
-                    fontSize: '0.8rem',
-                    transition: 'all 0.3s ease'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#2E7D32'
-                    e.currentTarget.style.color = 'white'
-                    e.currentTarget.style.transform = 'translateY(-2px)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'white'
-                    e.currentTarget.style.color = '#2E7D32'
-                    e.currentTarget.style.transform = 'translateY(0)'
-                  }}
-                >
-                  {slide.buttonText}
-                </Button>
-                
-                {/* Texto inferior */}
-                <p className="text-white mb-0" style={{
-                  fontSize: '0.7rem',
-                  opacity: 0.7
-                }}>
-                  {slide.textoInferior}
-                </p>
-              </div>
-            </div>
-          </Carousel.Item>
-        ))}
-      </Carousel>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div>
 
+      {/* Estilos */}
       <style>{`
-        .hero-carousel-moderno .carousel-control-prev,
-        .hero-carousel-moderno .carousel-control-next {
-          width: 5%;
-          opacity: 0.6;
-          transition: all 0.3s ease;
+        .hero-carousel-moderno .swiper-slide {
+          transition: all 0.4s ease;
+          opacity: 0.65;
+          transform: scale(0.88);
         }
         
-        .hero-carousel-moderno .carousel-control-prev:hover,
-        .hero-carousel-moderno .carousel-control-next:hover {
+        .hero-carousel-moderno .swiper-slide-active {
           opacity: 1;
-          transform: scale(1.1);
+          transform: scale(1.05);
+          z-index: 10;
         }
         
-        .hero-carousel-moderno .carousel-indicators {
-          bottom: 30px;
+        .hero-carousel-moderno .swiper-slide-active .card-slide {
+          box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
         
-        .hero-carousel-moderno .carousel-indicators button {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          margin: 0 6px;
-          background-color: white;
-          opacity: 0.5;
+        .hero-carousel-moderno .swiper-pagination {
+          bottom: 10px !important;
+          position: relative !important;
+          margin-top: 15px;
+        }
+        
+        .hero-carousel-moderno .swiper-pagination-bullet {
+          width: 8px;
+          height: 8px;
+          background-color: #2E7D32;
+          opacity: 0.4;
           transition: all 0.3s ease;
+          margin: 0 5px !important;
         }
         
-        .hero-carousel-moderno .carousel-indicators button.active {
+        .hero-carousel-moderno .swiper-pagination-bullet-active {
           opacity: 1;
           background-color: #2E7D32;
-          transform: scale(1.2);
+          transform: scale(1.3);
+          width: 20px;
+          border-radius: 10px;
         }
         
         @media (max-width: 768px) {
-          .hero-carousel-moderno h1 {
-            font-size: 1.5rem !important;
+          .hero-carousel-moderno .swiper-slide {
+            transform: scale(0.92);
+            opacity: 0.8;
           }
-          .hero-carousel-moderno .btn {
-            padding: 8px 25px !important;
-            font-size: 0.75rem !important;
+          .hero-carousel-moderno .swiper-slide-active {
+            transform: scale(1);
           }
-          .hero-carousel-moderno span {
-            font-size: 0.65rem !important;
+          .card-slide {
+            height: 420px !important;
           }
-          .hero-carousel-moderno p {
-            font-size: 0.8rem !important;
+        }
+        
+        @media (max-width: 480px) {
+          .card-slide {
+            height: 380px !important;
           }
         }
       `}</style>

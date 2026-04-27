@@ -14,6 +14,8 @@ import Elecciones from './components/sections/Elecciones'
 import GobiernoEscolar from './components/pages/GobiernoEscolar'
 import Perfiles from './components/pages/Perfiles'
 import SitiosInteres from './components/sections/SitiosInteres'
+import Estadisticas from './components/sections/Statistics'
+import CarruselModalidades from './components/sections/CarruselModalidades'
 function App() {
   return (
     <BrowserRouter>
@@ -23,14 +25,18 @@ function App() {
           <Route path="/" element={
             <>
               <HeroCarousel />
+               
             <UltimasNovedades />
+            <Estadisticas></Estadisticas> 
               <GaleriaFotos />
               <Elecciones></Elecciones>
               <AFADEC />
               <NuestraBanda />
               <Programs />
+              
               <SitiosInteres></SitiosInteres>
               <Values />
+              
 
             </>
           } />
