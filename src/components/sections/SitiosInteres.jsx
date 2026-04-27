@@ -7,7 +7,7 @@ import gobernacion from '../../assets/images/sitios/gobernacion.png'
 import humano from '../../assets/images/sitios/humanoenlinea.png'
 import icbf from '../../assets/images/sitios/icbf.jpg'
 import Ministerio from '../../assets/images/sitios/ministerio.png'
-import sena1 from '../../assets/images/sitios/sena1.jpg'
+import sena1 from '../../assets/images/sitios/Sena1.jpg'
 
 const SitiosInteres = () => {
   const sitios = [
