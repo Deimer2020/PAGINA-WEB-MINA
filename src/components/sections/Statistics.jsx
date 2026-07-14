@@ -2,7 +2,7 @@
 import { Container, Row, Col } from 'react-bootstrap'
 
 // Importar imagen de estudiantes (PNG sin fondo)
-import estudiantesImg from '../../assets/images/MINAFOTO2.png'
+import estudiantesImg from '../../assets/images/MINAFOTO3.png'
 
 const Estadisticas = () => {
   const stats = [

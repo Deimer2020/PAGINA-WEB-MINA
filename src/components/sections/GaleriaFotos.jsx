@@ -1,6 +1,6 @@
 import { Container, Row, Col, Modal, Image, Button } from 'react-bootstrap'
 import { useState } from 'react'
-import { FaCamera, FaInstagram } from 'react-icons/fa'
+import { FaCamera, FaInstagram, FaTiktok } from 'react-icons/fa'
 import foto1 from '../../assets/images/mina.jpeg'
 import foto2 from  '../../assets/images/mina1.jpeg'
 import foto3 from  '../../assets/images/mina2.jpeg'
@@ -100,8 +100,8 @@ const GaleriaFotos = () => {
         </Row>
         
         <div className="text-center mt-5">
-          <Button variant="success" size="lg" className="px-4">
-            <FaInstagram className="me-2" /> Ver más en Instagram
+          <Button href='https://www.tiktok.com/@italamina' target='_blank'  variant="success" size="lg" className="px-4">
+            <FaTiktok className="me-2" /> Ver más en tiktok
           </Button>
         </div>
       </Container>

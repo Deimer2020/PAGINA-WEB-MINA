@@ -30,7 +30,7 @@ const GobiernoEscolar = () => {
         "2 representantes de los padres de familia",
         "1 estudiante de grado once",
         "1 representante de los egresados",
-        "1 representante del sector productivo"
+        "1 representante del sector productivo."
       ],
       funciones: [
         "Tomar decisiones que afectan el funcionamiento institucional",
