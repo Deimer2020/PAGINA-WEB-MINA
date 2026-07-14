@@ -1,4 +1,9 @@
 # public/admin/config.yml
+site_url: https://iea-lamina.netlify.app
+display_url: https://iea-lamina.netlify.app/admin
+
+
+# public/admin/config.yml
 backend:
   name: git-gateway
   branch: main
