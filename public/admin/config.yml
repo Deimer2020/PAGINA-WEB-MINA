@@ -1,19 +1,13 @@
 # public/admin/config.yml
-site_url: https://iea-lamina.netlify.app
-display_url: https://iea-lamina.netlify.app/admin
-
-
-# public/admin/config.yml
 backend:
   name: git-gateway
   branch: main
-  repo: Deimer2020/PAGINA-WEB-MINA  # ← CAMBIA POR TU REPOSITORIO
+  repo: Deimer2020/PAGINA-WEB-MINA
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
 collections:
-  # ========== COLECCIÓN: NOVEDADES ==========
   - name: "novedades"
     label: "📰 Novedades"
     folder: "src/content/novedades"
@@ -22,32 +16,5 @@ collections:
     fields:
       - { label: "Título", name: "titulo", widget: "string" }
       - { label: "Fecha", name: "fecha", widget: "date" }
-      - { label: "Descripción corta", name: "descripcion", widget: "text" }
-      - { label: "Imagen", name: "imagen", widget: "image", required: false }
-      - { label: "Contenido completo", name: "body", widget: "markdown" }
-
-  # ========== COLECCIÓN: EVENTOS ==========
-  - name: "eventos"
-    label: "📅 Eventos"
-    folder: "src/content/eventos"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - { label: "Nombre del evento", name: "titulo", widget: "string" }
-      - { label: "Fecha", name: "fecha", widget: "date" }
-      - { label: "Lugar", name: "lugar", widget: "string" }
       - { label: "Descripción", name: "descripcion", widget: "text" }
       - { label: "Imagen", name: "imagen", widget: "image", required: false }
-
-  # ========== COLECCIÓN: DIRECTIVOS ==========
-  - name: "directivos"
-    label: "👥 Directivos"
-    folder: "src/content/directivos"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Nombre completo", name: "nombre", widget: "string" }
-      - { label: "Cargo", name: "cargo", widget: "string" }
-      - { label: "Teléfono", name: "telefono", widget: "string", required: false }
-      - { label: "Email", name: "email", widget: "string", required: false }
-      - { label: "Foto", name: "foto", widget: "image", required: false }
