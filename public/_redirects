@@ -1,0 +1,5 @@
+# Redirección para React Router
+/* /index.html 200
+
+# Asegurar tipos MIME correctos para archivos JS
+/assets/*.js application/javascript
