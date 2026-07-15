@@ -6,8 +6,15 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'  // ← Para el carrusel
 import './index.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
+
+const tinaConfig = {
+  // Configuración básica para Tina
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    
+      <App />
+    
   </React.StrictMode>,
 )
