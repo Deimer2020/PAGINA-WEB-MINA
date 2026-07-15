@@ -1,0 +1,74 @@
+# cloudcannon.config.yml
+# Configuración básica del sitio
+timezone: America/Bogota
+
+# Colecciones (contenido editable)
+collections:
+  # ========== NOVEDADES ==========
+  novedades:
+    path: src/content/novedades
+    output: true
+    icon: newspaper
+    name: 📰 Novedades
+    description: Noticias y eventos del colegio
+    fields:
+      - name: titulo
+        label: Título
+        type: text
+        required: true
+      - name: fecha
+        label: Fecha
+        type: date
+        required: true
+      - name: descripcion
+        label: Descripción
+        type: text
+      - name: imagen
+        label: Imagen
+        type: image
+
+  # ========== EVENTOS ==========
+  eventos:
+    path: src/content/eventos
+    output: true
+    icon: calendar
+    name: 📅 Eventos
+    description: Eventos programados
+    fields:
+      - name: titulo
+        label: Título
+        type: text
+        required: true
+      - name: fecha
+        label: Fecha
+        type: date
+        required: true
+      - name: lugar
+        label: Lugar
+        type: text
+      - name: descripcion
+        label: Descripción
+        type: text
+
+  # ========== DIRECTIVOS ==========
+  directivos:
+    path: src/content/directivos
+    output: true
+    icon: users
+    name: 👥 Directivos
+    description: Personal directivo
+    fields:
+      - name: nombre
+        label: Nombre completo
+        type: text
+        required: true
+      - name: cargo
+        label: Cargo
+        type: text
+        required: true
+      - name: telefono
+        label: Teléfono
+        type: text
+      - name: email
+        label: Email
+        type: text
