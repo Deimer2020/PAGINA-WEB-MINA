@@ -71,4 +71,4 @@ collections:
         type: text
       - name: email
         label: Email
-        type: text
+        type: text  

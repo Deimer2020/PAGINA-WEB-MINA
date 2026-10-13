@@ -1,0 +1,25 @@
+.mina-hero { background: linear-gradient(125deg,#183e2d,#075238); padding: 24px 0 16px; overflow: hidden; }
+.mina-hero__frame { max-width: 1440px; margin: auto; position: relative; }
+.mina-hero__carousel { padding: 0 0 32px; }
+.mina-hero__card { position: relative; height: clamp(380px,35vw,510px); border-radius: 24px; overflow: hidden; background: #173c29; isolation: isolate; }
+.mina-hero__card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg,transparent 20%,rgba(7,29,18,.2) 40%,rgba(7,29,18,.9) 100%); z-index: -1; }
+.mina-hero__photo { position: absolute; width: 100%; height: 100%; object-fit: cover; inset: 0; z-index: -2; }
+.mina-hero__content { position: absolute; bottom: 0; left: 0; right: 0; padding: 36px 42px; color: white; }
+.mina-hero__eyebrow { display: block; font-size: .75rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #f0d991; margin-bottom: 10px; }
+.mina-hero__content h1,.mina-hero__content h2 { font-family: 'Playfair Display',serif; font-size: clamp(2rem,3.3vw,3.5rem); font-weight: 700; line-height: 1.1; margin: 0 0 14px; }
+.mina-hero__content p { font-size: 1rem; line-height: 1.5; max-width: 470px; margin: 0 0 22px; }
+.mina-hero__cta { display: inline-flex; align-items: center; gap: 24px; color: white; text-decoration: none; background: #2e7d32; border: 1px solid #83b27c; border-radius: 50px; padding: 12px 24px; font-size: .8rem; font-weight: 700; }
+.mina-hero__cta:hover { background: #246929; color: white; }
+.mina-hero__carousel .swiper-slide { opacity: .72; transition: opacity .4s; }
+.mina-hero__carousel .swiper-slide-active { opacity: 1; }
+.mina-hero__carousel .swiper-pagination { bottom: 0; }
+.mina-hero__carousel .swiper-pagination-bullet { width: 9px; height: 9px; background: white; opacity: .5; }
+.mina-hero__carousel .swiper-pagination-bullet-active { background: #f0d991; opacity: 1; }
+.mina-hero__arrow { position: absolute; top: calc(50% - 16px); transform: translateY(-50%); z-index: 3; width: 48px; height: 48px; border: 1px solid #ffffff88; border-radius: 50%; background: #fff; color: #18472e; font-size: 1.5rem; box-shadow: 0 4px 18px #0003; }
+.mina-hero__arrow:hover { background: #f0d991; }
+.mina-hero__arrow--prev { left: 24px; }
+.mina-hero__arrow--next { right: 24px; }
+.mina-hero__pause { display: block; margin: 8px auto 0; background: transparent; border: 0; color: #fff; font-size: .8rem; text-decoration: underline; text-underline-offset: 4px; padding: 8px 14px; }
+.mina-hero button:focus-visible,.mina-hero a:focus-visible { outline: 3px solid #f0d991; outline-offset: 4px; }
+@media(max-width:767px) { .mina-hero { padding: 16px 14px 12px; } .mina-hero__card { border-radius: 18px; height: 430px; } .mina-hero__content { padding: 28px 24px 32px; } .mina-hero__content h1,.mina-hero__content h2 { font-size: 2.15rem; } .mina-hero__content p { font-size: .9rem; } .mina-hero__arrow { top: 32%; width: 38px; height: 38px; } .mina-hero__arrow--prev { left: 10px; } .mina-hero__arrow--next { right: 10px; } .mina-hero__carousel .swiper-slide { opacity: 1; } }
+@media(prefers-reduced-motion:reduce) { .mina-hero__carousel .swiper-slide { transition: none; } }

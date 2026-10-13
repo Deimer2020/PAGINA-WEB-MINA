@@ -26,6 +26,7 @@ import DirectorsSection from '../nosotros/DirectorsSection'
 import CurrentDirectorsSection from '../nosotros/CurrentDirectorsSection'
 import HimnoModal from '../nosotros/HimnoModal.jsx'
 import Uniformes from '../nosotros/Uniforme.jsx'
+import DocumentosInstitucionales from '../sections/DocumentosInstitucionales.jsx'
 
 // Importar medios
 import videoInstitucional from '../../assets/videos/institucional.mp4'
@@ -203,6 +204,7 @@ const Nosotros = () => {
       <VideoSection />
       <Uniformes></Uniformes>
       <PrinciplesSection />
+      <DocumentosInstitucionales />
       <DirectorsSection />
       <CurrentDirectorsSection />
 

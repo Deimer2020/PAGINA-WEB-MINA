@@ -1,5 +1,8 @@
 // src/components/sections/Programs.jsx
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
+import { useState } from 'react'
+import PecuariaModal from './PecuariaModal'
+import AgricolaModal from './AgricolaModal'
 
 // Importar imágenes de fondo para cada programa
 import imgAgricola from '../../assets/images/programas/agro.jpg'
@@ -7,6 +10,8 @@ import imgPecuaria from '../../assets/images/programas/pecuaria.jpg'
 import imgInnovacion from '../../assets/images/programas/tecnologia.jpg'
 
 const Programs = () => {
+  const [showAgricola, setShowAgricola] = useState(false)
+  const [showPecuaria, setShowPecuaria] = useState(false)
   const programs = [
     { 
       titulo: 'Técnico Agrícola',
@@ -32,7 +37,7 @@ const Programs = () => {
   ]
 
   return (
-    <Container className="py-5" style={{ backgroundColor: '#F9F9F9' }}>
+    <Container id="programas" className="py-5" style={{ backgroundColor: '#F9F9F9' }}>
       <h2 className="text-center mb-5" style={{
         fontFamily: "'Playfair Display', serif",
         color: '#2E7D32',
@@ -115,6 +120,7 @@ const Programs = () => {
                         {program.descripcion}
                       </p>
                       <Button 
+                        onClick={program.titulo === 'Producción Pecuaria' ? () => setShowPecuaria(true) : program.titulo === 'Técnico Agrícola' ? () => setShowAgricola(true) : undefined}
                         variant="outline-light" 
                         size="sm" 
                         className="mt-3 rounded-pill px-4"
@@ -141,6 +147,8 @@ const Programs = () => {
           </Col>
         ))}
       </Row>
+      <AgricolaModal show={showAgricola} onHide={() => setShowAgricola(false)} />
+      <PecuariaModal show={showPecuaria} onHide={() => setShowPecuaria(false)} />
     </Container>
   )
 }

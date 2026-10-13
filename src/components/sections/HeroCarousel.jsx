@@ -1,25 +1,39 @@
-// src/components/sections/HeroCarouselModerno.jsx
+import { useEffect, useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules'
-import { Button } from 'react-bootstrap'
-
-// Importar imágenes locales
+import { Pagination, Autoplay, A11y, Keyboard } from 'swiper/modules'
+import { Link } from 'react-router-dom'
 import ita from '../../assets/images/ita.jpeg'
 import ita1 from '../../assets/images/ita1.jpeg'
 import ita2 from '../../assets/images/ita2.jpeg'
 import ita3 from '../../assets/images/ita3.jpeg'
 import ita4 from '../../assets/images/ita4.jpeg'
 import ita5 from '../../assets/images/ita5.jpeg'
-
 import 'swiper/css'
-import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
+import './HeroCarousel.css'
 
 const HeroCarousel = () => {
+  const swiperRef = useRef(null)
+  const [paused, setPaused] = useState(false)
+  const [hovered, setHovered] = useState(false)
+  const [focused, setFocused] = useState(false)
+  const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  useEffect(() => {
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const update = (event) => setReducedMotion(event.matches)
+    preference.addEventListener('change', update)
+    return () => preference.removeEventListener('change', update)
+  }, [])
+  useEffect(() => {
+    const swiper = swiperRef.current
+    if (!swiper || swiper.destroyed) return
+    if (paused || hovered || focused || reducedMotion) swiper.autoplay.stop()
+    else swiper.autoplay.start()
+  }, [paused, hovered, focused, reducedMotion])
   const slides = [
     {
       imagen: ita,
-      titulo: 'INSTITUCIÓN EDUCATIVA AGRÍCOLA LA MINA',
+      titulo: 'Agrícola La Mina',
       subtitulo: 'Formando líderes del campo con innovación y tradición',
       boton: 'CONOCE MÁS',
       color: '#2E7D32'
@@ -62,232 +76,42 @@ const HeroCarousel = () => {
   ]
 
   return (
-    <div style={{ 
-      position: 'relative', 
-      overflow: 'hidden',
-      background:'linear-gradient(135deg, #223628 0%, #085034 100%)', 
-      padding: '20px 0 50px 0',
-      marginTop: '0px'  
-    }}>
-     
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center',
-        position: 'relative',
-        zIndex: 2,
-        paddingTop: '30px'
-      }}>
-        <div style={{ width: '100%', maxWidth: '1400px', margin: '0 auto' }}>
-          <Swiper
-            modules={[EffectCoverflow, Pagination, Autoplay]}
-            effect="coverflow"
-            grabCursor={true}
-            centeredSlides={true}
-            slidesPerView="auto"
-            coverflowEffect={{
-              rotate: 0,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              slideShadows: false,
-            }}
-            pagination={{ clickable: true, dynamicBullets: true }}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            loop={true}
-            breakpoints={{
-              320: { slidesPerView: 1, spaceBetween: 20, centeredSlides: true },
-              768: { slidesPerView: 1.5, spaceBetween: 25, centeredSlides: true },
-              1024: { slidesPerView: 2.2, spaceBetween: 30, centeredSlides: true },
-              1280: { slidesPerView: 2.5, spaceBetween: 35, centeredSlides: true }
-            }}
-            className="hero-carousel-moderno"
-            style={{ padding: '20px 0 50px 0' }}
-          >
-            {slides.map((slide, index) => (
-              <SwiperSlide key={index} style={{ width: '480px', maxWidth: '75vw' }}>
-                <div className="card-slide" style={{
-                  position: 'relative',
-                  height: '480px',
-                  borderRadius: '20px',
-                  overflow: 'hidden',
-                  boxShadow: '0 15px 30px rgba(0,0,0,0.12)',
-                  transition: 'all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)',
-                  cursor: 'pointer',
-                  backgroundColor: 'white'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-6px)'
-                  e.currentTarget.style.boxShadow = '0 25px 40px rgba(0,0,0,0.15)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.style.boxShadow = '0 15px 30px rgba(0,0,0,0.12)'
-                }}>
-                  {/* Imagen de fondo */}
-                  <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    backgroundImage: `url(${slide.imagen})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    transition: 'transform 0.6s ease'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.08)'}
-                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'} />
-                  
-                  {/* Overlay suave */}
-                  <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    background: 'linear-gradient(135deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 100%)'
-                  }} />
-                  
-                  {/* Contenido */}
-                  <div style={{
-                    position: 'absolute',
-                    bottom: '10%',
-                    left: 0,
-                    right: 0,
-                    padding: '25px 30px',
-                    textAlign: 'center',
-                    color: 'white',
-                    zIndex: 2
-                  }}>
-                    <div style={{
-                      display: 'inline-block',
-                      width: '50px',
-                      height: '3px',
-                      backgroundColor: slide.color,
-                      marginBottom: '15px',
-                      borderRadius: '3px'
-                    }} />
-                    
-                    <h3 style={{
-                      fontFamily: "'Playfair Display', serif",
-                      fontSize: '1.4rem',
-                      fontWeight: '700',
-                      marginBottom: '10px',
-                      textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
-                      lineHeight: '1.3'
-                    }}>
-                      {slide.titulo}
-                    </h3>
-                    
-                    <p style={{
-                      fontSize: '0.85rem',
-                      opacity: 0.95,
-                      marginBottom: '20px',
-                      maxWidth: '90%',
-                      marginLeft: 'auto',
-                      marginRight: 'auto',
-                      lineHeight: '1.4'
-                    }}>
-                      {slide.subtitulo}
-                    </p>
-                    
-                    <Button
-                      variant="outline-light"
-                      size="sm"
-                      style={{
-                        borderRadius: '50px',
-                        padding: '7px 24px',
-                        fontSize: '0.75rem',
-                        fontWeight: '600',
-                        letterSpacing: '0.5px',
-                        transition: 'all 0.3s ease',
-                        borderWidth: '1.5px',
-                        backdropFilter: 'blur(4px)'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = slide.color
-                        e.currentTarget.style.borderColor = slide.color
-                        e.currentTarget.style.transform = 'translateY(-2px)'
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = 'transparent'
-                        e.currentTarget.style.borderColor = 'white'
-                        e.currentTarget.style.transform = 'translateY(0)'
-                      }}
-                    >
-                      {slide.boton}
-                    </Button>
+    <section className="mina-hero" aria-label="Nuestra institución"
+      onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+      onFocusCapture={() => setFocused(true)}
+      onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false) }}>
+      <div className="mina-hero__frame">
+        <Swiper modules={[Pagination, Autoplay, A11y, Keyboard]}
+          onSwiper={(swiper) => { swiperRef.current = swiper }}
+          centeredSlides slidesPerView={1} spaceBetween={20}
+          breakpoints={{ 768: { slidesPerView: 1.25, spaceBetween: 24 }, 1024: { slidesPerView: 1.65, spaceBetween: 28 } }}
+          loop grabCursor speed={reducedMotion ? 0 : 500}
+          pagination={{ clickable: true }}
+          keyboard={{ enabled: true, onlyInViewport: true }}
+          autoplay={reducedMotion ? false : { delay: 6500, disableOnInteraction: false }}
+          a11y={{ slideLabelMessage: 'Imagen {{index}} de {{slidesLength}}', paginationBulletMessage: 'Ir a la imagen {{index}}' }}
+          className="mina-hero__carousel">
+          {slides.map((slide, index) => (
+            <SwiperSlide key={slide.titulo}>
+              {({ isActive }) => (
+                <article className="mina-hero__card">
+                  <img className="mina-hero__photo" src={slide.imagen} alt="Instalaciones de la Institución Educativa Agrícola La Mina" loading={index === 0 ? 'eager' : 'lazy'} fetchPriority={index === 0 ? 'high' : 'auto'} />
+                  <div className="mina-hero__content">
+                    <span className="mina-hero__eyebrow">{index === 0 ? 'Institución Educativa' : 'Educación · Campo · Comunidad'}</span>
+                    {index === 0 ? <h1>{slide.titulo}</h1> : <h2>{slide.titulo}</h2>}
+                    <p>{slide.subtitulo}</p>
+                    {index === 0 || index === 3 ? <Link className="mina-hero__cta" to="/nosotros" tabIndex={isActive ? 0 : -1}>{slide.boton}<span aria-hidden="true">↗</span></Link> : <a className="mina-hero__cta" href="#programas" tabIndex={isActive ? 0 : -1}>{slide.boton}<span aria-hidden="true">↓</span></a>}
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+                </article>
+              )}
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <button className="mina-hero__arrow mina-hero__arrow--prev" type="button" aria-label="Imagen anterior" onClick={() => swiperRef.current?.slidePrev()}>←</button>
+        <button className="mina-hero__arrow mina-hero__arrow--next" type="button" aria-label="Imagen siguiente" onClick={() => swiperRef.current?.slideNext()}>→</button>
       </div>
-
-      {/* Estilos */}
-      <style>{`
-        .hero-carousel-moderno .swiper-slide {
-          transition: all 0.4s ease;
-          opacity: 0.65;
-          transform: scale(0.88);
-        }
-        
-        .hero-carousel-moderno .swiper-slide-active {
-          opacity: 1;
-          transform: scale(1.05);
-          z-index: 10;
-        }
-        
-        .hero-carousel-moderno .swiper-slide-active .card-slide {
-          box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-        
-        .hero-carousel-moderno .swiper-pagination {
-          bottom: 10px !important;
-          position: relative !important;
-          margin-top: 15px;
-        }
-        
-        .hero-carousel-moderno .swiper-pagination-bullet {
-          width: 8px;
-          height: 8px;
-          background-color: #2E7D32;
-          opacity: 0.4;
-          transition: all 0.3s ease;
-          margin: 0 5px !important;
-        }
-        
-        .hero-carousel-moderno .swiper-pagination-bullet-active {
-          opacity: 1;
-          background-color: #2E7D32;
-          transform: scale(1.3);
-          width: 20px;
-          border-radius: 10px;
-        }
-        
-        @media (max-width: 768px) {
-          .hero-carousel-moderno .swiper-slide {
-            transform: scale(0.92);
-            opacity: 0.8;
-          }
-          .hero-carousel-moderno .swiper-slide-active {
-            transform: scale(1);
-          }
-          .card-slide {
-            height: 420px !important;
-          }
-        }
-        
-        @media (max-width: 480px) {
-          .card-slide {
-            height: 380px !important;
-          }
-        }
-      `}</style>
-    </div>
+      {!reducedMotion && <button className="mina-hero__pause" type="button" aria-pressed={paused} onClick={() => setPaused(!paused)}>{paused ? 'Reanudar carrusel' : 'Pausar carrusel'}</button>}
+    </section>
   )
 }
-
 export default HeroCarousel

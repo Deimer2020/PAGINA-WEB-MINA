@@ -16,6 +16,7 @@ import Perfiles from './components/pages/Perfiles'
 import SitiosInteres from './components/sections/SitiosInteres'
 import Estadisticas from './components/sections/Statistics'
 import CarruselModalidades from './components/sections/CarruselModalidades'
+import NotFound from './components/pages/NotFound'
 function App() {
   return (
     <BrowserRouter>
@@ -43,6 +44,7 @@ function App() {
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path='/Gobierno-escolar' element={<GobiernoEscolar></GobiernoEscolar>} />
           <Route path="/perfiles" element={<Perfiles />} />
+        <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </div>

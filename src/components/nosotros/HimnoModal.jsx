@@ -7,7 +7,6 @@ const HimnoModal = ({ show, onHide, himnoAudio }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
-  const [currentStrophe, setCurrentStrophe] = useState(-1)
   const audioRef = useRef(null)
 
   // ⚠️ AJUSTA ESTOS TIEMPOS SEGÚN LA DURACIÓN REAL DE TU AUDIO ⚠️
@@ -80,26 +79,18 @@ y marchemos sin temor`,
     }
   ]
 
-  // Actualizar estrofa actual según el tiempo
+  const currentStrophe = letra.findIndex(
+    (estrofa) => currentTime >= estrofa.inicio && currentTime < estrofa.fin
+  )
+
+  // Desplazar la letra cuando cambia la estrofa resaltada.
   useEffect(() => {
-    let estrofaActual = -1
-    for (let i = 0; i < letra.length; i++) {
-      if (currentTime >= letra[i].inicio && currentTime < letra[i].fin) {
-        estrofaActual = i
-        break
-      }
-    }
-    if (estrofaActual !== currentStrophe) {
-      setCurrentStrophe(estrofaActual)
-      // Auto-scroll a la estrofa actual
-      setTimeout(() => {
-        const activeElement = document.querySelector('.estrofa-activa')
-        if (activeElement) {
-          activeElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        }
-      }, 100)
-    }
-  }, [currentTime, currentStrophe])
+    const timer = setTimeout(() => {
+      const activeElement = document.querySelector('.estrofa-activa')
+      activeElement?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [currentStrophe])
 
   // Configurar el audio
   useEffect(() => {
@@ -118,7 +109,6 @@ y marchemos sin temor`,
     const handleEnd = () => {
       setIsPlaying(false)
       setCurrentTime(0)
-      setCurrentStrophe(-1)
     }
 
     audio.addEventListener('loadedmetadata', setAudioData)
@@ -149,7 +139,6 @@ y marchemos sin temor`,
       audioRef.current.currentTime = 0
       setIsPlaying(false)
       setCurrentTime(0)
-      setCurrentStrophe(-1)
     }
   }
 
