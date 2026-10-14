@@ -1,29 +1,37 @@
-.docentes-page{padding:145px 0 70px;min-height:70vh;background:#f5f8f3}
-.docentes-heading{max-width:740px;margin:0 auto 42px;text-align:center}
-.docentes-eyebrow{color:#597454;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
-.docentes-heading h1{font-family:'Playfair Display',Georgia,serif;color:#215725;font-size:clamp(2rem,5vw,3.2rem);margin-bottom:18px}
-.docentes-heading>p:last-child{color:#52634e;line-height:1.7;font-size:1.1rem}
-.docentes-search{max-width:740px;margin:0 auto 28px}
-.docentes-search label{display:block;font-weight:600;color:#244b26;margin-bottom:10px}
-.docentes-search-row{display:flex;gap:10px}
-.docentes-search input{width:100%;min-width:0;padding:13px 16px;border:1px solid #b9c8b6;border-radius:10px;background:white;font:inherit}
-.docentes-search p{font-size:.9rem;color:#52634e;margin-top:10px}
-.docentes-search button,.docentes-controls button{border:1px solid #c7d6c1;background:white;color:#215725;padding:12px 16px;border-radius:10px;font:inherit;white-space:nowrap}
-.docentes-carousel{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/3);gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;overscroll-behavior-x:contain;scrollbar-color:#91af84 #e4eddf}
-.docente-card{scroll-snap-align:start;min-width:0;background:white;border:1px solid #dce6d7;border-radius:20px;overflow:hidden;box-shadow:0 8px 22px rgba(33,87,37,.06)}
-.docente-foto{height:250px;background:#e4eddf;display:flex;align-items:center;justify-content:center}
+.docentes-page{padding:125px 0 60px;min-height:70vh;background:#fafbf9}
+.docentes-heading{position:relative;padding:28px 32px;margin:0 0 24px;border-radius:20px;background:linear-gradient(115deg,#183e20,#286737);border-bottom:4px solid #c6a45c;color:white;overflow:hidden}
+.docentes-brand{display:flex;align-items:center;gap:18px}
+.docentes-escudo{width:64px;height:76px;object-fit:contain;flex-shrink:0;background:#fffef8;border-radius:12px;padding:6px}
+.docentes-eyebrow{color:#e0e9d9;font-size:.75rem;letter-spacing:.04em;margin:0 0 5px}
+.docentes-heading h1{font-family:'Playfair Display',Georgia,serif;color:white;font-size:clamp(1.65rem,3vw,2.25rem);margin:0}
+.docentes-description{max-width:700px;margin:15px 0 0;color:#e1eadc;line-height:1.6;font-size:.95rem}
+.docentes-search{background:white;border:1px solid #e1e8dc;border-radius:16px;padding:18px 22px;margin-bottom:24px;box-shadow:0 4px 16px rgba(26,64,33,.035)}
+.docentes-search-row{display:flex;gap:14px;align-items:flex-end}
+.docentes-search-field{flex:1;min-width:0}
+.docentes-area-field{flex:0 1 240px;min-width:0}
+.docentes-search label{display:block;font-weight:600;color:#244b26;font-size:.85rem;margin-bottom:7px}
+.docentes-search input,.docentes-search select{width:100%;min-width:0;height:44px;padding:10px 12px;border:1px solid #cbd7c5;border-radius:9px;background:#fafcf8;color:#30452d;font:inherit;font-size:.95rem}
+.docentes-search p{font-size:.85rem;color:#63755d;margin:12px 0 0}
+.docentes-search button,.docentes-controls button{border:1px solid #c7d6c1;background:white;color:#215725;padding:10px 15px;border-radius:9px;font:inherit;font-size:.9rem;white-space:nowrap;min-height:44px}
+.docentes-search button:hover,.docentes-controls button:not(:disabled):hover{background:#edf4e9}
+.docentes-carousel{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/3);gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px;overscroll-behavior-x:contain;scrollbar-color:#91af84 #e4eddf}
+.docentes-carousel[data-count="1"]{grid-auto-columns:min(100%,360px);justify-content:center}
+.docente-card{position:relative;scroll-snap-align:start;min-width:0;background:white;border:1px solid #dde7d7;border-radius:18px;box-shadow:0 5px 20px rgba(33,87,37,.055);padding:26px 22px 22px;display:flex;flex-direction:column;align-items:center;text-align:center;overflow:hidden}
+.docente-card:before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:#c6a45c}
+.docente-foto{width:126px;height:126px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#edf3e8;display:flex;align-items:center;justify-content:center;border:4px solid white;box-shadow:0 0 0 1px #d1dfc8,0 4px 12px rgba(27,69,32,.08);margin:5px 0 20px}
 .docente-foto img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
-.docente-foto span{font-size:4rem;font-family:Georgia,serif;color:#386837}
-.docente-info{padding:26px;overflow-wrap:anywhere}
-.docente-info h2{font-size:1.35rem;color:#244b26;margin:0 0 10px}
-.docente-cargo{font-weight:600;color:#2e7d32;margin-bottom:6px}
-.docente-area{color:#61715b;font-size:.95rem}
-.docente-presentacion{white-space:pre-wrap;line-height:1.7;color:#455441}
-.docente-correo{display:block;color:#215725;text-underline-offset:4px;font-size:.95rem}
-.docente-correo:focus-visible,.docentes-carousel:focus-visible,.docentes-search input:focus-visible,.docentes-search button:focus-visible,.docentes-controls button:focus-visible{outline:3px solid #b88724;outline-offset:3px}
-.docentes-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:16px}
-.docentes-controls span{font-size:.9rem;color:#52634e;text-align:center}
+.docente-foto span{font-size:2.8rem;font-family:Georgia,serif;color:#386837}
+.docente-info{width:100%;flex:1;display:flex;flex-direction:column;align-items:center;overflow-wrap:anywhere}
+.docente-info h2{font-size:1.2rem;color:#244b26;margin:0 0 9px;line-height:1.4}
+.docente-cargo{font-weight:600;color:#2e7d32;margin:0 0 12px;font-size:.9rem}
+.docente-area{color:#506747;background:#edf4e7;border-radius:20px;padding:5px 12px;font-size:.8rem;margin:0 0 16px}
+.docente-presentacion{white-space:pre-wrap;line-height:1.65;color:#596951;font-size:.9rem;margin-bottom:20px}
+.docente-correo{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:auto;min-height:42px;padding:10px 18px;background:#215725;border:1px solid #215725;border-radius:9px;color:white;font-size:.9rem;font-weight:600;text-decoration:none}
+.docente-correo:hover{background:#183e20;color:white}
+.docente-correo:focus-visible,.docentes-carousel:focus-visible,.docentes-search input:focus-visible,.docentes-search select:focus-visible,.docentes-search button:focus-visible,.docentes-controls button:focus-visible{outline:3px solid #b88724;outline-offset:3px}
+.docentes-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:12px}
+.docentes-controls span{font-size:.85rem;color:#63755d;text-align:center}
 .docentes-controls button:disabled{opacity:.45;cursor:default}
-.docentes-empty{background:white;border:1px solid #dce6d7;border-radius:16px;padding:35px;text-align:center;color:#52634e}
-@media(max-width:991px){.docentes-carousel{grid-auto-columns:calc((100% - 24px)/2)}}
-@media(max-width:575px){.docentes-carousel{grid-auto-columns:100%}.docentes-page{padding-top:125px}.docente-foto{height:280px}.docentes-controls{gap:10px;flex-wrap:wrap}.docentes-controls span{order:3;flex-basis:100%}.docentes-search-row{flex-wrap:wrap}}
+.docentes-empty{background:white;border:1px solid #dce6d7;border-radius:16px;padding:30px;text-align:center;color:#52634e}
+@media(max-width:991px){.docentes-carousel{grid-auto-columns:calc((100% - 24px)/2)}.docentes-search-row{flex-wrap:wrap}.docentes-search-field{flex-basis:55%}.docentes-area-field{flex-grow:1}}
+@media(max-width:575px){.docentes-page{padding-top:115px}.docentes-heading{padding:23px 20px;border-radius:16px}.docentes-brand{gap:13px}.docentes-escudo{width:52px;height:64px}.docentes-eyebrow{font-size:.68rem}.docentes-description{font-size:.88rem}.docentes-search{padding:16px}.docentes-search-field,.docentes-area-field{flex-basis:100%}.docentes-carousel{grid-auto-columns:100%}.docentes-controls{gap:10px;flex-wrap:wrap}.docentes-controls span{order:3;flex-basis:100%}}
