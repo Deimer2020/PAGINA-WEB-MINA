@@ -12,5 +12,16 @@
                          "source":  "/((?!api/|admin/|equipo/|assets/|uploads/|images/|.*\\.[^/]+$).*)",
                          "destination":  "/index.html"
                      }
-                 ]
+                 ],
+    "headers":  [
+                    {
+                        "headers":  [
+                                        {
+                                            "key":  "Cache-Control",
+                                            "value":  "no-store"
+                                        }
+                                    ],
+                        "source":  "/equipo/:path*"
+                    }
+                ]
 }
