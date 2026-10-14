@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Panel de novedades | Agrícola La Mina</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f6f2;color:#243727;font:16px system-ui,sans-serif}
+header{background:#215725;color:white;padding:22px max(20px,calc((100vw - 1100px)/2));display:flex;gap:18px;align-items:center;justify-content:space-between}
+h1{font-size:24px;margin:0}main{max-width:1100px;margin:32px auto;padding:0 20px}
+.box{background:white;border:1px solid #dde5db;border-radius:16px;padding:24px;margin-bottom:20px}
+button,.button{font:inherit;border:0;border-radius:8px;padding:12px 18px;background:#215725;color:white;cursor:pointer;text-decoration:none;display:inline-block}
+button.secondary{background:#e7eee4;color:#243727}button:disabled{opacity:.5;cursor:wait}
+label{display:block;font-weight:600;margin:18px 0 6px}input,textarea{font:inherit;width:100%;padding:12px;border:1px solid #b9c8b6;border-radius:8px}
+textarea{min-height:100px}input[type=checkbox]{width:auto;margin-right:8px}input[type=color]{height:48px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+#status{white-space:pre-wrap;overflow-wrap:anywhere;padding:12px 0}#status.error{color:#a62525}
+.news{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid #e0e8dd;padding:18px 0}
+.news p{margin:5px 0;color:#596955}small{color:#596955}img.preview{max-width:100%;max-height:220px;object-fit:contain;display:block;margin-top:12px}
+.gallery-item{padding:12px;background:#f3f6f2;margin-top:12px;border-radius:8px}
+[hidden]{display:none!important}@media(max-width:650px){.grid{grid-template-columns:1fr}header{align-items:flex-start;flex-direction:column}.news{align-items:flex-start;flex-direction:column}}
+</style>
+<script src="/equipo/panel.js" defer></script>
+</head>
+<body>
+<header><h1>Agrícola La Mina · Novedades</h1><div id="identity"></div></header>
+<main>
+<div id="status" role="status" aria-live="polite"></div>
+<section id="login" class="box" hidden><h2>Bienvenido al panel</h2><p>Entra con el correo de Google autorizado por la institución.</p>
+<a class="button" href="/api/equipo?action=login">Entrar con Google</a></section>
+<section id="listing" class="box" hidden><h2>Novedades</h2><div class="actions">
+<button id="create">Crear novedad</button><button id="refresh" class="secondary">Actualizar listado</button>
+<button id="logout" class="secondary">Cerrar sesión</button></div><div id="news"></div></section>
+<section id="editor" class="box" hidden>
+<h2 id="editorTitle">Editar novedad</h2>
+<form id="form">
+<label for="titulo">Título</label><input id="titulo" required maxlength="200">
+<div class="grid"><div><label for="fechaPublicacion">Fecha de publicación</label><input id="fechaPublicacion" type="date" required></div>
+<div><label for="fecha">Fecha o período del evento</label><input id="fecha" required maxlength="200"></div></div>
+<label for="descripcion">Resumen de la tarjeta</label><textarea id="descripcion" required maxlength="2000"></textarea>
+<label for="coverUpload">Imagen de portada</label><input id="coverUpload" type="file" accept="image/jpeg,image/png,image/webp">
+<small>JPG, PNG o WebP. Máximo 2 MB por foto.</small><img id="coverPreview" class="preview" alt="Vista previa de la portada" hidden>
+<label for="imagenAlt">Descripción de la imagen</label><input id="imagenAlt" required maxlength="300">
+<p id="legacyHint" hidden>Esta noticia tiene una presentación especial. Dejar el contenido y la galería vacíos la conserva. Añadir texto o fotos los sustituye por la presentación estándar.</p>
+<label for="contenido">Contenido completo</label><textarea id="contenido" maxlength="40000" rows="10"></textarea>
+<label for="galleryUpload">Añadir foto a la galería</label><input id="galleryUpload" type="file" accept="image/jpeg,image/png,image/webp"><div id="gallery"></div>
+<div class="grid"><div><label for="orden">Orden (menor aparece primero)</label><input id="orden" type="number" min="0" max="10000" required></div>
+<div><label for="etiqueta">Etiqueta opcional</label><input id="etiqueta" maxlength="100"></div>
+<div><label for="color">Color</label><input id="color" type="color"></div></div>
+<label><input id="publicada" type="checkbox">Publicada en la web</label>
+<small>Desactiva esta opción para guardar como borrador u ocultar una noticia.</small>
+<label><input id="destacado" type="checkbox">Destacada</label>
+<label><input id="imagenCompleta" type="checkbox">Mostrar imagen completa</label>
+<div class="actions"><button id="save" type="submit">Guardar cambios</button><button id="back" type="button" class="secondary">Volver al listado</button></div>
+<p>Al guardar, la web comenzará a actualizarse. Los cambios se verán cuando termine el despliegue.</p>
+</form></section>
+</main></body></html>
