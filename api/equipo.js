@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     const config = configuration()
     const url = new URL(req.url, config.origin)
     const action = url.searchParams.get('action') || 'session'
-    const post = ['save', 'upload', 'logout'].includes(action)
+    const post = ['save', 'upload', 'logout', 'delete'].includes(action)
     if (req.method !== (post ? 'POST' : 'GET')) return res.status(405).json({ error: 'Método no permitido.' })
     if (post && (req.headers.origin !== config.origin || !String(req.headers['content-type']).startsWith('application/json'))) {
       return res.status(403).json({ error: 'Solicitud no permitida.' })
@@ -92,6 +92,24 @@ export default async function handler(req, res) {
         message: 'CMS: subir fotografía (' + user.email + ')', content: buffer.toString('base64'),
       })
       return res.json({ src: '/uploads/novedades/' + name })
+    }
+    if (action === 'delete') {
+      const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body
+      if (!body || !idIsValid(body.id) || typeof body.sha !== 'string' || !body.sha) {
+        return res.status(400).json({ error: 'Identificador de borrador inválido.' })
+      }
+      const path = NEWS_PATH + '/' + body.id + '.json'
+      const file = await github(path)
+      if (!file) return res.status(404).json({ error: 'El borrador ya no existe. Actualiza el listado.' })
+      if (file.sha !== body.sha) {
+        return res.status(409).json({ error: 'El borrador cambió. Actualiza el listado antes de eliminarlo.' })
+      }
+      if (decodeFile(file).publicada !== false) {
+        return res.status(403).json({ error: 'Solo se pueden eliminar borradores o noticias ocultas.' })
+      }
+      await github(path, 'DELETE', { sha: file.sha,
+        message: 'CMS: eliminar borrador (' + user.email + ')' })
+      return res.json({ ok: true })
     }
     if (action === 'save') {
       const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body

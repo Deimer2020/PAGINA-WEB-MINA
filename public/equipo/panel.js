@@ -26,7 +26,12 @@ async function load() {
     const text = make('div', '')
     text.append(make('strong', noticia.titulo), make('p', noticia.fecha + ' · ' + (noticia.publicada === false ? 'Borrador / oculta' : 'Publicada')))
     const button = make('button', 'Editar'); button.className = 'secondary'; button.onclick = () => edit(noticia)
-    row.append(text, button); $('news').append(row)
+    const actions = make('div', ''); actions.className = 'actions'; actions.append(button)
+    if (noticia.publicada === false) {
+      const remove = make('button', 'Eliminar borrador'); remove.className = 'danger'
+      remove.onclick = () => deleteDraft(noticia); actions.append(remove)
+    }
+    row.append(text, actions); $('news').append(row)
   }
   if (!noticias.length) $('news').append(make('p', 'Todavía no hay novedades.'))
   $('listing').hidden = false
@@ -51,6 +56,7 @@ function edit(noticia) {
     etiqueta: '', color: '#2E7D32', publicada: false, destacado: false, imagenCompleta: false })
   current.galeria ||= []
   $('editorTitle').textContent = noticia ? 'Editar novedad' : 'Crear novedad'
+  $('deleteDraft').hidden = !current.id || current.publicada !== false
   for (const name of ['titulo','fechaPublicacion','fecha','descripcion','imagenAlt','contenido','orden','etiqueta','color']) $(name).value = current[name] ?? ''
   for (const name of ['publicada','destacado','imagenCompleta']) $(name).checked = current[name] === true
   $('coverPreview').hidden = !current.imagen
@@ -62,7 +68,7 @@ function edit(noticia) {
 }
 function setBusy(value) {
   busy = value
-  $('form').querySelectorAll('input,textarea,button').forEach(element => { element.disabled = value })
+  document.querySelectorAll('#form input,#form textarea,#form button,#listing button').forEach(element => { element.disabled = value })
 }
 async function upload(file, gallery) {
   if (!file) return
@@ -93,9 +99,28 @@ $('form').onsubmit = async event => {
   try {
     const result = await api('save', { id: current.id, sha: current.sha, noticia: current })
     current = { ...result.noticia, id: result.id, sha: result.sha }; dirty = false
+    $('editorTitle').textContent = 'Editar novedad'
+    $('deleteDraft').hidden = current.publicada !== false
     status(current.publicada ? 'Cambios guardados. La web se actualizará cuando termine el despliegue.' : 'Borrador guardado. Esta noticia no aparecerá en la web.')
   } catch (error) { status(error.message, true) } finally { setBusy(false) }
 }
+async function deleteDraft(noticia) {
+  if (busy) return
+  const warning = dirty ? '\nLos cambios sin guardar también se perderán.' : ''
+  if (!confirm('¿Eliminar definitivamente el borrador "' + noticia.titulo + '"? Esta acción no se puede deshacer desde el panel.' + warning)) return
+  setBusy(true); status('Eliminando borrador…')
+  let deleted = false
+  try {
+    await api('delete', { id: noticia.id, sha: noticia.sha })
+    deleted = true; dirty = false; current = null
+    $('editor').hidden = true
+    await load()
+    status('Borrador eliminado.')
+  } catch (error) {
+    status(deleted ? 'El borrador fue eliminado, pero no se pudo actualizar el listado. Pulsa Actualizar listado.' : error.message, true)
+  } finally { setBusy(false) }
+}
+$('deleteDraft').onclick = () => deleteDraft(current)
 $('create').onclick = () => edit()
 $('back').onclick = async () => {
   if (busy || (dirty && !confirm('Hay cambios sin guardar. ¿Volver al listado?'))) return

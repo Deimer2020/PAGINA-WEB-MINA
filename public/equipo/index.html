@@ -9,7 +9,7 @@ header{background:#215725;color:white;padding:22px max(20px,calc((100vw - 1100px
 h1{font-size:24px;margin:0}main{max-width:1100px;margin:32px auto;padding:0 20px}
 .box{background:white;border:1px solid #dde5db;border-radius:16px;padding:24px;margin-bottom:20px}
 button,.button{font:inherit;border:0;border-radius:8px;padding:12px 18px;background:#215725;color:white;cursor:pointer;text-decoration:none;display:inline-block}
-button.secondary{background:#e7eee4;color:#243727}button:disabled{opacity:.5;cursor:wait}
+button.secondary{background:#e7eee4;color:#243727}button.danger{background:#a62525;color:white}button:disabled{opacity:.5;cursor:wait}
 label{display:block;font-weight:600;margin:18px 0 6px}input,textarea{font:inherit;width:100%;padding:12px;border:1px solid #b9c8b6;border-radius:8px}
 textarea{min-height:100px}input[type=checkbox]{width:auto;margin-right:8px}input[type=color]{height:48px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
@@ -50,7 +50,7 @@ textarea{min-height:100px}input[type=checkbox]{width:auto;margin-right:8px}input
 <small>Desactiva esta opción para guardar como borrador u ocultar una noticia.</small>
 <label><input id="destacado" type="checkbox">Destacada</label>
 <label><input id="imagenCompleta" type="checkbox">Mostrar imagen completa</label>
-<div class="actions"><button id="save" type="submit">Guardar cambios</button><button id="back" type="button" class="secondary">Volver al listado</button></div>
+<div class="actions"><button id="save" type="submit">Guardar cambios</button><button id="back" type="button" class="secondary">Volver al listado</button><button id="deleteDraft" type="button" class="danger" hidden>Eliminar borrador</button></div>
 <p>Al guardar, la web comenzará a actualizarse. Los cambios se verán cuando termine el despliegue.</p>
 </form></section>
 </main></body></html>

@@ -37,7 +37,7 @@ Nunca pongas secretos en variables VITE_, archivos del repositorio, capturas ni 
 
 Publica los archivos preparados, espera Ready en Vercel y prueba /equipo/ con el correo administrador. Comprueba que un correo no autorizado recibe rechazo, y que guardar un borrador no lo muestra en la web. Luego publica una novedad real y verifica su tarjeta, Leer más y las fotografías después de Ready.
 
-Las fotos admiten JPG, PNG o WebP de hasta 2 MB. Al subir una imagen queda guardada aunque abandones la edición; no se publica una tarjeta hasta guardar la noticia. Para retirar una noticia, desactiva Publicada. Esta versión no permite eliminar permanentemente archivos ni noticias.
+Las fotos admiten JPG, PNG o WebP de hasta 2 MB. Al subir una imagen queda guardada aunque abandones la edición; no se publica una tarjeta hasta guardar la noticia. Para retirar una noticia, desactiva Publicada. El botón Eliminar borrador permite borrar definitivamente una noticia oculta, después de confirmar. Las fotografías permanecen guardadas para evitar eliminar archivos usados por otras noticias. Las noticias publicadas no se pueden borrar con este botón; primero hay que ocultarlas y guardar.
 
 El panel /admin con GitHub continúa disponible para el administrador durante la transición. No retires las variables GITHUB_CLIENT_ID y GITHUB_CLIENT_SECRET hasta decidir cerrar ese acceso.
 

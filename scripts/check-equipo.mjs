@@ -83,3 +83,49 @@ res=response()
 await handler({method:'POST',url:'/api/equipo?action=save',headers,body:{id:'existing',sha:'old',noticia:news}},res)
 assert.equal(res.statusCode,409)
 console.log('OK: sesión firmada, acceso por correo, CSRF, Google con PKCE, rechazo de correos ajenos, rutas restringidas, publicación y conflictos.')
+
+// Eliminación de borradores: GitHub simulado, sin operaciones reales.
+let deletedPaths = []
+const draftFile = (published = false, sha = 'draft-sha') => ({
+  sha, type: 'file', encoding: 'base64', content: Buffer.from(JSON.stringify({ ...news, publicada: published })).toString('base64'),
+})
+globalThis.fetch = async (url, options) => {
+  if (options.method === 'DELETE') { deletedPaths.push({ url: String(url), body: JSON.parse(options.body) }); return { ok: true, json: async () => ({}) } }
+  return { ok: true, json: async () => draftFile() }
+}
+res = response()
+await handler({ method: 'POST', url: '/api/equipo?action=delete', headers: {}, body: { id: 'draft', sha: 'draft-sha' } }, res)
+assert.equal(res.statusCode, 403)
+res = response()
+await handler({ method: 'POST', url: '/api/equipo?action=delete', headers: { origin: config.origin, 'content-type': 'application/json' }, body: { id: 'draft', sha: 'draft-sha' } }, res)
+assert.equal(res.statusCode, 401)
+res = response()
+await handler({ method: 'POST', url: '/api/equipo?action=delete', headers, body: { id: '../../api/file', sha: 'draft-sha' } }, res)
+assert.equal(res.statusCode, 400)
+res = response()
+await handler({ method: 'GET', url: '/api/equipo?action=delete', headers }, res)
+assert.equal(res.statusCode, 405)
+res = response()
+await handler({ method: 'POST', url: '/api/equipo?action=delete', headers, body: { id: 'draft', sha: 'old-sha' } }, res)
+assert.equal(res.statusCode, 409)
+assert.equal(deletedPaths.length, 0)
+globalThis.fetch = async () => ({ ok: true, json: async () => draftFile(true) })
+res = response()
+await handler({ method: 'POST', url: '/api/equipo?action=delete', headers, body: { id: 'draft', sha: 'draft-sha' } }, res)
+assert.equal(res.statusCode, 403)
+globalThis.fetch = async () => ({ status: 404 })
+res = response()
+await handler({ method: 'POST', url: '/api/equipo?action=delete', headers, body: { id: 'draft', sha: 'draft-sha' } }, res)
+assert.equal(res.statusCode, 404)
+globalThis.fetch = async (url, options) => {
+  if (options.method === 'DELETE') { deletedPaths.push({ url: String(url), body: JSON.parse(options.body) }); return { ok: true, json: async () => ({}) } }
+  return { ok: true, json: async () => draftFile() }
+}
+res = response()
+await handler({ method: 'POST', url: '/api/equipo?action=delete', headers, body: { id: 'draft', sha: 'draft-sha' } }, res)
+assert.equal(res.statusCode, 200)
+assert.equal(deletedPaths.length, 1)
+assert.match(deletedPaths[0].url, /contents\/src\/content\/novedades\/draft\.json$/)
+assert.equal(deletedPaths[0].body.sha, 'draft-sha')
+assert.equal(deletedPaths[0].body.branch, 'main')
+console.log('OK: eliminación de borradores, protección de noticias publicadas, sesión y conflictos.')
