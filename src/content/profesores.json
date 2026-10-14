@@ -1,3 +1,17 @@
 {
-  "profesores": []
+  "profesores": [
+    {
+      "nombre": "Deimer Jose Arias Monsalve",
+      "cargo": "Docente",
+      "area": "Informática",
+      "correo": "monsalvedeimer53@gmail.com",
+      "foto": "/uploads/novedades/71ce45f79ad229b63d822c5f.jpg",
+      "presentacion": "Ingeniero de sistemas con dos años de experiencia",
+      "publicado": true,
+      "orden": 100,
+      "actualizadoPor": "monsalvedeimer53@gmail.com",
+      "actualizadoEn": "2026-10-14T17:27:56.344Z",
+      "id": "profesor-d74fdd202a29df0979ab5ff2"
+    }
+  ]
 }
