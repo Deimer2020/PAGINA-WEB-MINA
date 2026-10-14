@@ -1,6 +1,7 @@
 import { configuration, seal, unseal, cookie, cookieValue, getUser, idIsValid, normalizeNews,
   github, decodeFile, NEWS_PATH, UPLOAD_PATH, imageExtension, randomId } from '../lib/equipo-cms.js'
 import { createHash } from 'node:crypto'
+import { access } from '../lib/accesos-cms.js'
 
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store')
@@ -51,18 +52,19 @@ export default async function handler(req, res) {
       const identity = await userResponse.json()
       const email = String(identity.email || '').toLowerCase()
       if (!identity.email_verified || !identity.sub || (!email.endsWith('@gmail.com') && !identity.hd)
-        || !config.emails.includes(email)) {
+) {
         return res.redirect(302, '/equipo/?error=permiso')
       }
       res.setHeader('Set-Cookie', [cookie('equipo_oauth', '', 0),
         cookie('equipo_session', seal({ kind: 'session', email, sub: identity.sub, exp: Date.now() + 28800000 }))])
-      return res.redirect(302, '/equipo/')
+      return res.redirect(302, config.emails.includes(email) ? '/equipo/' : '/equipo/acceso.html')
     }
     if (action === 'logout') {
       res.setHeader('Set-Cookie', cookie('equipo_session', '', 0))
       return res.json({ ok: true })
     }
-    const user = getUser(req, config)
+    const user = action === 'upload' ? await access(req, config) : getUser(req, config)
+    if (user?.rol === 'solicitante') return res.status(403).json({ error: 'Tu solicitud todavía no está aprobada.' })
     if (!user) return res.status(401).json({ error: 'Inicia sesión con un correo autorizado.' })
     if (action === 'session') return res.json({ user })
     if (action === 'list') {
@@ -89,7 +91,7 @@ export default async function handler(req, res) {
       if (!extension) return res.status(400).json({ error: 'Solo se permiten imágenes JPG, PNG o WebP de hasta 2 MB.' })
       const name = randomId() + '.' + extension
       await github(UPLOAD_PATH + '/' + name, 'PUT', {
-        message: 'CMS: subir fotografía (' + user.email + ')', content: buffer.toString('base64'),
+        message: user.rol === 'profesor' ? 'CMS: subir fotografía docente' : 'CMS: subir fotografía (' + user.email + ')', content: buffer.toString('base64'),
       })
       return res.json({ src: '/uploads/novedades/' + name })
     }

@@ -137,6 +137,11 @@ async function start() {
     google: 'No se pudo completar el acceso con Google.', permiso: 'Tu correo no está autorizado. Contacta al administrador de la institución.' }
   const reason = new URLSearchParams(location.search).get('error')
   try {
+    const permissionsResponse = await fetch('/api/accesos?action=session', { credentials: 'same-origin' })
+    if (permissionsResponse.ok) {
+      const permission = await permissionsResponse.json()
+      if (permission.user.rol !== 'admin') { location.replace('/equipo/acceso.html'); return }
+    }
     const { user } = await api('session'); $('identity').textContent = user.email
     status('Cargando novedades…'); await load(); status('')
   } catch (error) { $('login').hidden = false; status(errors[reason] || error.message, true) }

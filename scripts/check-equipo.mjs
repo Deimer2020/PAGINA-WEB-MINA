@@ -55,8 +55,8 @@ globalThis.fetch=async(url,options)=>{
 }
 res=response()
 await handler({method:'GET',url:'/api/equipo?action=callback&state='+google.searchParams.get('state')+'&code=fake',headers:{cookie:flowCookie}},res)
-assert.equal(res.url,'/equipo/?error=permiso')
-assert(!String(res.headers['Set-Cookie']).includes('equipo_session'))
+assert.equal(res.url,'/equipo/acceso.html')
+assert(String(res.headers['Set-Cookie']).includes('equipo_session'))
 globalThis.fetch=async(url)=>String(url).includes('/token')
   ? {ok:true,json:async()=>({access_token:'google-access'})}
   : {ok:true,json:async()=>({email:'profesor@gmail.com',email_verified:true,sub:'google-sub'})}

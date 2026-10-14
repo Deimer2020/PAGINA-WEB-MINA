@@ -1,0 +1,10 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Acceso docente | Agrícola La Mina</title><link rel="stylesheet" href="/equipo/profesores.css?v=2">
+<script src="/equipo/accesos.js?v=1" defer></script></head><body>
+<header><h1>Agrícola La Mina · Acceso docente</h1><span id="identity"></span></header>
+<main><div id="status" role="status" aria-live="polite"></div>
+<section id="login" class="box" hidden><h2>Tu perfil docente</h2><p>Entra con Google para solicitar acceso. La institución revisará tu solicitud antes de permitirte crear o editar tu perfil.</p><a class="button" href="/api/equipo?action=login">Entrar con Google</a></section>
+<section id="request" class="box" hidden><h2>Solicitar acceso</h2><p id="state"></p><form id="requestForm"><label for="nombre">Nombre completo</label><input id="nombre" maxlength="180" required><div class="actions"><button type="submit">Enviar solicitud</button></div></form>
+<a id="myProfile" class="button" href="/equipo/profesores.html" hidden>Administrar mi perfil</a><div class="actions"><button id="refresh" class="secondary">Comprobar estado</button><button id="logout" class="secondary">Cerrar sesión</button></div></section>
+<section id="admin" class="box" hidden><nav><a href="/equipo/">Novedades</a><a href="/equipo/profesores.html">Profesores</a><a href="/equipo/acceso.html" aria-current="page">Solicitudes de acceso</a></nav><h2>Solicitudes de acceso</h2><p>Aprueba únicamente a docentes de la institución. Cada docente aprobado podrá administrar su propio perfil.</p>
+<button id="reload" class="secondary">Actualizar solicitudes</button><div id="requests"></div></section></main></body></html>

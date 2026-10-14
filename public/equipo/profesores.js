@@ -3,6 +3,7 @@ let sha = ''
 let current = null
 let dirty = false
 let busy = false
+let role = ''
 const textFields = ['nombre', 'cargo', 'area', 'correo', 'presentacion']
 function status(message, error = false) { $('status').textContent = message; $('status').className = error ? 'error' : '' }
 function element(tag, text) { const node = document.createElement(tag); node.textContent = text; return node }
@@ -16,7 +17,7 @@ async function api(action, body, endpoint = 'profesores') {
   }
   return data
 }
-function setBusy(value) { busy = value; document.querySelectorAll('button,input,textarea').forEach(node => { node.disabled = value }) }
+function setBusy(value) { busy = value; document.querySelectorAll('button,input,textarea,select').forEach(node => { node.disabled = value }) }
 async function load() {
   const data = await api('list'); sha = data.sha
   $('profiles').replaceChildren()
@@ -27,6 +28,7 @@ async function load() {
     row.append(copy, button); $('profiles').append(row)
   })
   if (!data.profesores.length) $('profiles').append(element('p', 'Todavía no hay perfiles. Añade al primer profesor.'))
+  $('create').hidden = role !== 'admin' && data.profesores.length > 0
   $('listing').hidden = false
 }
 function preview(src) {
@@ -36,6 +38,8 @@ function edit(profile) {
   if (busy) return
   current = structuredClone(profile || { nombre: '', cargo: '', area: '', correo: '', foto: '', presentacion: '', orden: 100, publicado: false })
   textFields.forEach(name => { $(name).value = current[name] || '' })
+  $('propietarioId').value = current.propietarioId || ''
+  $('orden').hidden = role !== 'admin'; $('orden').previousElementSibling.hidden = role !== 'admin'
   $('orden').value = current.orden; $('publicado').checked = current.publicado === true
   $('editorTitle').textContent = profile ? 'Editar profesor' : 'Añadir profesor'
   $('delete').hidden = !current.id || current.publicado !== false
@@ -64,7 +68,7 @@ $('form').onsubmit = async event => {
   current.orden = Number($('orden').value); current.publicado = $('publicado').checked
   setBusy(true); status('Guardando perfil…')
   try {
-    const data = await api('save', { sha, id: current.id, profesor: current })
+    const data = await api('save', { sha, id: current.id, profesor: current, ...(role === 'admin' ? { propietarioId: $('propietarioId').value } : {}) })
     sha = data.sha; current = data.profesor; dirty = false
     $('editorTitle').textContent = 'Editar profesor'; $('delete').hidden = current.publicado !== false
     status(current.publicado ? 'Perfil guardado. Aparecerá en la web cuando termine el despliegue.' : 'Perfil guardado como borrador. No aparecerá en la web.')
@@ -92,7 +96,20 @@ $('refresh').onclick = async () => {
 window.addEventListener('beforeunload', event => { if (dirty || busy) { event.preventDefault(); event.returnValue = '' } })
 async function start() {
   try {
-    const session = await api('session', undefined, 'equipo'); $('identity').textContent = session.user.email
+    const session = await api('session', undefined, 'accesos')
+    role = session.user.rol
+    if (role === 'solicitante') { location.replace('/equipo/acceso.html'); return }
+    $('identity').textContent = session.user.email
+    $('ownerField').hidden = role !== 'admin'
+    if (role === 'admin') {
+      const permissions = await api('list', undefined, 'accesos')
+      for (const user of permissions.usuarios.filter(item => item.estado === 'aprobado')) {
+        const option = element('option', user.nombre + ' · ' + user.email)
+        option.value = user.propietarioId; $('propietarioId').append(option)
+      }
+    } else {
+      document.querySelector('nav a[href="/equipo/"]').hidden = true
+    }
     await load()
   } catch (error) { status(error.message, true) }
 }
