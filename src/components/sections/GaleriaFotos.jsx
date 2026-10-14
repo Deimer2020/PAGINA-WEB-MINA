@@ -45,10 +45,11 @@ const GaleriaFotos = () => {
     <Container fluid style={{ backgroundColor: '#F9F9F9', padding: '48px 0' }}>
       <Container>
         <h2 className="text-center mb-4" style={{
-          fontFamily: "'Playfair Display', serif",
+          fontFamily: "'Playfair Display', serif", 
           color: '#2E7D32',
           fontSize: '2.5rem'
         }}>
+       {/*    hola */}
           Galería Institucional
           <div style={{
             width: '80px',
