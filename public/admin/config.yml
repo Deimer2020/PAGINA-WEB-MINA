@@ -2,6 +2,7 @@ backend:
   name: github
   repo: Deimer2020/PAGINA-WEB-MINA
   branch: main
+  base_url: https://ieagricolalamina.edu.co
   auth_endpoint: api/cms-auth
 locale: es
 media_folder: public/uploads/novedades
