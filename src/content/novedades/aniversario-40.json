@@ -1,0 +1,17 @@
+{
+  "titulo": "40 años formando generaciones",
+  "fecha": "Del 21 al 25 de septiembre de 2026",
+  "descripcion": "Celebramos los 40 años de la Institución Educativa Agrícola La Mina, con la participación de delegaciones de Media Luna y Manaure los días 23 y 24 de septiembre.",
+  "imagen": "/images/aniversario-40/portada.jpeg",
+  "imagenAlt": "Imagen conmemorativa de los 40 años de la Institución Educativa Agrícola La Mina",
+  "fechaPublicacion": "2026-09-21",
+  "publicada": true,
+  "destacado": true,
+  "orden": 1,
+  "color": "#b88724",
+  "legacyTipo": "aniversario",
+  "contenido": "",
+  "galeria": [],
+  "imagenCompleta": true,
+  "etiqueta": "40.º aniversario"
+}

@@ -1,0 +1,17 @@
+{
+  "titulo": "⚽ Torneo de Microfútbol 2026",
+  "fecha": "28 de agosto - 5 de septiembre de 2026",
+  "descripcion": "¡Llegó el Torneo de Microfútbol! Categorías Infantil (6°-7°), Prejuvenil (8°-9°) y Juvenil (10°-11°). También participa el equipo de docentes.",
+  "imagen": "/uploads/novedades/microfutbol.JPG",
+  "imagenAlt": "Torneo de microfútbol",
+  "fechaPublicacion": "2026-08-28",
+  "publicada": true,
+  "destacado": true,
+  "orden": 2,
+  "color": "#2196F3",
+  "legacyTipo": "microfutbol",
+  "contenido": "",
+  "galeria": [],
+  "imagenCompleta": false,
+  "etiqueta": ""
+}

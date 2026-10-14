@@ -1,20 +1,46 @@
-# public/admin/config.yml
 backend:
-  name: git-gateway
-  branch: main
+  name: github
   repo: Deimer2020/PAGINA-WEB-MINA
-
-media_folder: "public/uploads"
-public_folder: "/uploads"
-
+  branch: main
+  auth_endpoint: api/cms-auth
+locale: es
+media_folder: public/uploads/novedades
+public_folder: /uploads/novedades
 collections:
-  - name: "novedades"
-    label: "📰 Novedades"
-    folder: "src/content/novedades"
+  - name: novedades
+    label: Novedades
+    label_singular: Novedad
+    folder: src/content/novedades
     create: true
+    extension: json
+    format: json
+    identifier_field: titulo
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{titulo}} — {{fecha}}"
+    sortable_fields: [fechaPublicacion, titulo, orden]
     fields:
-      - { label: "Título", name: "titulo", widget: "string" }
-      - { label: "Fecha", name: "fecha", widget: "date" }
-      - { label: "Descripción", name: "descripcion", widget: "text" }
-      - { label: "Imagen", name: "imagen", widget: "image", required: false }
+      - {label: Título, name: titulo, widget: string}
+      - {label: Fecha de publicación, name: fechaPublicacion, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
+      - {label: Fecha o período del evento, name: fecha, widget: string}
+      - {label: Resumen de la tarjeta, name: descripcion, widget: text}
+      - {label: Imagen de portada, name: imagen, widget: image}
+      - {label: Descripción de la imagen, name: imagenAlt, widget: string}
+      - {label: Mostrar imagen completa, name: imagenCompleta, widget: boolean, default: false}
+      - {label: Publicada, name: publicada, widget: boolean, default: true}
+      - {label: Destacada, name: destacado, widget: boolean, default: false}
+      - {label: Orden (menor aparece primero), name: orden, widget: number, value_type: int, min: 0, default: 100}
+      - {label: Etiqueta, name: etiqueta, widget: string, required: false}
+      - {label: Color, name: color, widget: color, default: "#2E7D32"}
+      - label: Contenido completo
+        name: contenido
+        widget: text
+        required: false
+        hint: "Escribe el texto de la noticia. Se conservan los saltos de línea. En noticias antiguas, dejar vacío conserva su presentación especial."
+      - label: Galería de la noticia
+        name: galeria
+        widget: list
+        required: false
+        fields:
+          - {label: Fotografía, name: src, widget: image}
+          - {label: Descripción, name: alt, widget: string}
+      - {name: legacyTipo, widget: hidden, default: ""}

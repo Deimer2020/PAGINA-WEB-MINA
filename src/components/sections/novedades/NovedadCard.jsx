@@ -19,7 +19,7 @@ const NovedadCard = ({ novedad, onLeerMas }) => (
       <Button
         variant="outline-success"
         className="novedad-card__button"
-        onClick={() => onLeerMas(novedad.modalTipo)}
+        onClick={() => onLeerMas(novedad.id)}
         aria-label={`Leer más: ${novedad.titulo}`}
       >
         Leer más <span aria-hidden="true">→</span>

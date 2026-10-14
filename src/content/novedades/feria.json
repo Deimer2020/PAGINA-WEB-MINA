@@ -1,0 +1,17 @@
+{
+  "titulo": "🎶 Tercer Encuentro de Carrizos y Acordeones",
+  "fecha": "21 de abril de 2026",
+  "descripcion": "Homenaje a Israel Romero, Rafael Orozco y Rafael Andrés Carrillo.",
+  "imagen": "/uploads/novedades/feria-card.jpeg",
+  "imagenAlt": "Evento cultural",
+  "fechaPublicacion": "2026-04-21",
+  "publicada": true,
+  "destacado": true,
+  "orden": 5,
+  "color": "#9C27B0",
+  "legacyTipo": "feria",
+  "contenido": "",
+  "galeria": [],
+  "imagenCompleta": false,
+  "etiqueta": ""
+}

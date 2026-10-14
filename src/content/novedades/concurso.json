@@ -1,0 +1,17 @@
+{
+  "titulo": "🎤 Buscando una Estrella",
+  "fecha": "Inscripciones hasta el 15 de abril 2026",
+  "descripcion": "Concurso de Canto Vallenato. Demuestra tu voz y gana un gran premio.",
+  "imagen": "/uploads/novedades/concurso-card.jpeg",
+  "imagenAlt": "Concurso de canto",
+  "fechaPublicacion": "2026-04-15",
+  "publicada": true,
+  "destacado": true,
+  "orden": 4,
+  "color": "#E91E63",
+  "legacyTipo": "concurso",
+  "contenido": "",
+  "galeria": [],
+  "imagenCompleta": false,
+  "etiqueta": ""
+}

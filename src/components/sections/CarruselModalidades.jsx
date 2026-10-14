@@ -18,7 +18,7 @@ const CarruselModalidades = () => {
     },
     {
       icono: <FaLaptopCode />,
-      titulo: 'Virtua',
+      titulo: 'Virtual',
       descripcion: 'Clases en vivo por videoconferencia, materiales digitales y acompañamiento remoto personalizado.',
       color: '#1565C0',
       bgLight: '#E3F2FD'

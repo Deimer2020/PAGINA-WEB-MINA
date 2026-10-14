@@ -1,0 +1,17 @@
+{
+  "titulo": "🗳️ Resultados Elecciones 2026",
+  "fecha": "18 de marzo de 2026",
+  "descripcion": "¡Ya tenemos nuevos líderes estudiantiles! Conoce a nuestro Personero, Contralor y la nueva mesa directiva de AFADEC.",
+  "imagen": "/uploads/novedades/elecciones-card.jpeg",
+  "imagenAlt": "Estudiantes votando",
+  "fechaPublicacion": "2026-03-18",
+  "publicada": true,
+  "destacado": true,
+  "orden": 3,
+  "color": "#FF9800",
+  "legacyTipo": "elecciones",
+  "contenido": "",
+  "galeria": [],
+  "imagenCompleta": false,
+  "etiqueta": ""
+}

@@ -5,6 +5,7 @@ import EleccionesContent from '../novedadesContent/EleccionesContent'
 import ConcursoContent from '../novedadesContent/ConcursoContent'
 import FeriaContent from '../novedadesContent/FeriaContent'
 import AniversarioContent from '../novedadesContent/AniversarioContent'
+import NoticiaContent from '../novedadesContent/NoticiaContent'
 
 const NovedadesModal = ({ 
   show, 
@@ -17,6 +18,9 @@ const NovedadesModal = ({
   if (!novedad) return null
 
   const renderContent = () => {
+    if (novedad.contenido?.trim() || novedad.galeria?.length || !novedad.legacyTipo) {
+      return <NoticiaContent novedad={novedad} />
+    }
     switch (novedad.modalTipo) {
       case 'aniversario':
         return <AniversarioContent data={novedad.modalContent} />
@@ -36,7 +40,7 @@ const NovedadesModal = ({
       case 'feria':
         return <FeriaContent data={novedad.modalContent} />
       default:
-        return <p>Contenido no disponible</p>
+        return <NoticiaContent novedad={novedad} />
     }
   }
 
@@ -44,7 +48,7 @@ const NovedadesModal = ({
     <Modal show={show} onHide={onHide} size="lg" centered>
       <Modal.Header closeButton style={{ backgroundColor: novedad.modalTipo === 'aniversario' ? '#215725' : novedad.color, color: 'white' }}>
         <Modal.Title style={{ fontFamily: "'Playfair Display', serif" }}>
-          {novedad.modalContent.titulo || "Novedad"}
+          {novedad.titulo || "Novedad"}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body style={{ maxHeight: '70vh', overflowY: 'auto' }}>
