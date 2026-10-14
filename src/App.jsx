@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
+import SeoMetadata from './components/layout/SeoMetadata'
 import HeroCarousel from './components/sections/HeroCarousel'
 import Programs from './components/sections/Programs'
 import Values from './components/sections/Values'
@@ -21,6 +22,7 @@ import EquipoDocente from './components/pages/EquipoDocente'
 function App() {
   return (
     <BrowserRouter>
+      <SeoMetadata />
       <div>
         <Navbar />
         <Routes>
