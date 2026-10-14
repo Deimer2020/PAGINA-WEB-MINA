@@ -1,0 +1,27 @@
+<!doctype html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Profesores | Panel Agrícola La Mina</title>
+<link rel="stylesheet" href="/equipo/profesores.css?v=1">
+<script src="/equipo/profesores.js?v=1" defer></script>
+</head><body>
+<header><h1>Agrícola La Mina · Profesores</h1><span id="identity"></span></header>
+<main><nav><a href="/equipo/">Novedades</a> <a href="/equipo/profesores.html" aria-current="page">Profesores</a> <a href="/equipo-docente" target="_blank" rel="noopener">Ver página pública ↗</a></nav>
+<div id="status" role="status" aria-live="polite"></div>
+<section id="login" class="box" hidden><h2>Acceso al panel</h2><p>Entra con tu correo autorizado y después selecciona Profesores.</p><a class="button" href="/api/equipo?action=login">Entrar con Google</a></section>
+<section id="listing" class="box" hidden><h2>Profesores</h2><p>Registra los perfiles que se mostrarán en Equipo docente.</p>
+<div class="actions"><button id="create">Añadir profesor</button><button id="refresh" class="secondary">Actualizar listado</button></div><div id="profiles"></div></section>
+<section id="editor" class="box" hidden><h2 id="editorTitle">Perfil docente</h2><form id="form">
+<label for="nombre">Nombre completo</label><input id="nombre" required maxlength="180" autocomplete="name">
+<label for="cargo">Cargo</label><input id="cargo" required maxlength="180" placeholder="Por ejemplo: Docente">
+<label for="area">Área o asignatura (opcional)</label><input id="area" maxlength="180" placeholder="Por ejemplo: Matemáticas">
+<label for="correo">Correo de contacto (opcional)</label><input id="correo" type="email" maxlength="254" autocomplete="email">
+<p class="hint">Este correo será visible en la página pública cuando publiques el perfil. No concede acceso al panel.</p>
+<label for="fotoUpload">Foto (opcional)</label><input id="fotoUpload" type="file" accept="image/jpeg,image/png,image/webp">
+<p class="hint">JPG, PNG o WebP, hasta 2 MB. Sin foto se mostrarán las iniciales del nombre.</p>
+<img id="fotoPreview" alt="Vista previa de la foto" hidden><button id="removePhoto" type="button" class="secondary" hidden>Quitar foto del perfil</button>
+<label for="presentacion">Presentación breve (opcional)</label><textarea id="presentacion" rows="5" maxlength="1500"></textarea>
+<label for="orden">Orden (menor aparece primero)</label><input id="orden" type="number" min="0" max="10000" required>
+<label><input id="publicado" type="checkbox">Publicar perfil en la web</label>
+<div class="actions"><button type="submit">Guardar perfil</button><button id="back" type="button" class="secondary">Volver al listado</button><button id="delete" type="button" class="danger" hidden>Eliminar perfil oculto</button></div>
+<p class="hint">La página pública se actualizará cuando termine el despliegue.</p>
+</form></section></main></body></html>

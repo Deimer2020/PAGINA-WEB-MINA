@@ -266,6 +266,12 @@ const Navbar = () => {
                 </NavDropdown.Item>
               </NavDropdown>
 
+              <Nav.Link as={Link} to="/equipo-docente" onClick={() => setExpanded(false)}
+                className="nav-link-moderno"
+                style={{ color: '#333', fontWeight: '500', fontSize: '0.85rem', padding: '8px 18px', borderRadius: '30px' }}>
+                Equipo docente
+              </Nav.Link>
+
               {/* GOBIERNO ESCOLAR */}
               <Nav.Link 
                 as={Link}
