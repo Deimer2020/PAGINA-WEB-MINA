@@ -1,0 +1,30 @@
+/* Portada central y tarjetas laterales superpuestas. */
+.novedades-slider--coverflow{position:relative;padding:8px 60px 18px;border-radius:30px;background:radial-gradient(ellipse at center,#e0edd9 0%,#f0f7eb 58%,#f9fcf7 100%);isolation:isolate}
+.novedades-slider--coverflow .novedades-carousel{padding:18px 0 12px}
+.novedades-slider--coverflow .swiper-wrapper{align-items:center;min-height:540px}
+.novedades-slider--coverflow .swiper-slide{width:340px;align-items:center;justify-content:center}
+.novedades-slider--coverflow .novedad-card{border:0;border-radius:26px;background:transparent;box-shadow:none;overflow:hidden;transition:background-color .3s,box-shadow .3s}
+.novedades-slider--coverflow .novedad-card:hover,.novedades-slider--coverflow .novedad-card:focus-within{transform:none;border:0;box-shadow:none}
+.novedades-slider--coverflow .novedad-card__image{height:410px;aspect-ratio:auto;border:0;border-radius:20px}
+.novedades-slider--coverflow .novedad-card__image img{border-radius:inherit}
+.novedades-slider--coverflow .novedad-card__body{display:none;position:relative}
+.novedades-slider--coverflow .swiper-slide-active .novedad-card{padding:14px;background:white;box-shadow:0 20px 35px rgb(23 53 28 / 24%)}
+.novedades-slider--coverflow .swiper-slide-active .novedad-card__image{height:350px;border-radius:16px}
+.novedades-slider--coverflow .swiper-slide-active .novedad-card__body{display:flex;padding:18px 70px 8px 8px;min-height:142px;justify-content:center}
+.novedades-slider--coverflow .novedad-card__date{font-size:.73rem;line-height:1.45;color:#798577;gap:6px;margin-bottom:7px}
+.novedades-slider--coverflow .novedad-card__icon{font-size:.85rem}
+.novedades-slider--coverflow .novedad-card__title{color:#183f24;font-weight:750;font-size:1.1rem;line-height:1.4;margin:0}
+.novedades-slider--coverflow .novedad-card__anniversary{font-size:.7rem;padding:3px 8px;margin-bottom:7px}
+.novedades-slider--coverflow .novedad-card__button{position:absolute;right:4px;top:50%;transform:translateY(-50%);width:48px;min-height:48px;padding:0;border:0;border-radius:15px;background:#2e7d32;color:white;display:flex;align-items:center;justify-content:center;font-size:1.65rem;box-shadow:0 4px 8px rgb(20 60 25 / 15%);margin:0}
+.novedades-slider--coverflow .novedad-card__button:hover{transform:translateY(-50%);background:#215725}
+.novedades-slider--coverflow .swiper-slide-shadow-left,.novedades-slider--coverflow .swiper-slide-shadow-right{background:rgb(0 0 0 / 36%);border-radius:20px;pointer-events:none}
+.novedades-slider--coverflow .novedades-slider__arrow{position:absolute;top:45%;z-index:5;width:48px;min-height:48px;display:flex;align-items:center;justify-content:center;border:0;background:#2e7d32;color:white;box-shadow:0 5px 12px rgb(20 60 25 / 18%);font-size:2.3rem;line-height:1}
+.novedades-slider--coverflow .novedades-slider__arrow--prev{left:12px}
+.novedades-slider--coverflow .novedades-slider__arrow--next{right:12px}
+.novedades-slider--coverflow .novedades-slider__arrow:hover{background:#215725}
+.novedades-slider--coverflow .swiper-pagination{margin-top:20px}
+.novedades-slider--coverflow .novedades-slider__controls{gap:14px;margin-top:5px}
+.novedades-slider__counter{font-size:.8rem;color:#52654e}
+.novedades-slider--coverflow .novedades-slider__pause{font-size:.8rem;min-height:40px;padding:8px 14px;background:white}
+@media(max-width:767px){.novedades-slider--coverflow{padding:8px 34px 16px;border-radius:22px}.novedades-slider--coverflow .swiper-slide{width:min(300px,calc(100vw - 120px))}.novedades-slider--coverflow .swiper-wrapper{min-height:470px}.novedades-slider--coverflow .novedad-card__image{height:340px}.novedades-slider--coverflow .swiper-slide-active .novedad-card__image{height:280px}.novedades-slider--coverflow .swiper-slide-active .novedad-card{padding:10px}.novedades-slider--coverflow .novedad-card__title{font-size:.95rem}.novedades-slider--coverflow .swiper-slide-active .novedad-card__body{padding:14px 52px 6px 5px;min-height:150px}.novedades-slider--coverflow .novedad-card__button{width:42px;min-height:42px;border-radius:12px}.novedades-slider--coverflow .novedades-slider__arrow{width:40px;min-height:40px;font-size:2rem}.novedades-slider--coverflow .novedades-slider__arrow--prev{left:0}.novedades-slider--coverflow .novedades-slider__arrow--next{right:0}}
+@media(prefers-reduced-motion:reduce){.novedades-slider--coverflow .novedad-card{transition:none}}

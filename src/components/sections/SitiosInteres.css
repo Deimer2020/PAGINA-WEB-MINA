@@ -1,0 +1,23 @@
+.interes-section{padding:50px 0 38px;background:white}
+.interes-title{text-align:center;color:#2e7d32;font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.8rem,3vw,2.35rem);margin-bottom:12px}
+.interes-title:after{content:'';display:block;width:65px;height:3px;background:#c6a45c;margin:14px auto 0;border-radius:3px}
+.interes-description{text-align:center;color:#62725e;font-size:.95rem;margin:18px 0 24px}
+.interes-marquee{--logo-width:220px;--logo-gap:36px;overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent)}
+.interes-track{display:flex;width:max-content;animation:interes-scroll 35s linear infinite}
+.interes-group{display:flex;align-items:center;flex-shrink:0;gap:var(--logo-gap);padding-right:var(--logo-gap)}
+.interes-link{flex:0 0 var(--logo-width);width:var(--logo-width);min-height:150px;padding:16px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-decoration:none;color:#52654c;border-radius:10px}
+.interes-link img{width:100%;height:86px;object-fit:contain;transition:transform .2s ease}
+.interes-link span{text-align:center;font-size:.78rem;line-height:1.4}
+.interes-link:hover{color:#215725;background:#f6faf3}
+.interes-link:hover img{transform:scale(1.04)}
+.interes-link:focus-visible,.interes-pause:focus-visible{outline:3px solid #b88724;outline-offset:-3px}
+.interes-marquee:hover .interes-track,.interes-marquee--paused .interes-track{animation-play-state:paused}
+.interes-marquee:focus-within{overflow-x:auto;mask-image:none;-webkit-mask-image:none}
+.interes-marquee:focus-within .interes-track{animation:none;transform:none}
+.interes-marquee:focus-within .interes-group[aria-hidden=true]{display:none}
+.interes-controls{display:flex;justify-content:center;margin-top:16px}
+.interes-pause{min-height:40px;padding:8px 15px;border:1px solid #d2dfcc;border-radius:24px;background:#f7faf4;color:#345d2b;font:inherit;font-size:.8rem}
+.interes-pause:hover{background:#eaf3e4}
+@keyframes interes-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:575px){.interes-section{padding:35px 0 28px}.interes-marquee{--logo-width:170px;--logo-gap:22px}.interes-link{min-height:135px}.interes-link img{height:74px}.interes-track{animation-duration:30s}.interes-description{font-size:.88rem}}
+@media(prefers-reduced-motion:reduce){.interes-marquee{overflow-x:auto;mask-image:none;-webkit-mask-image:none}.interes-track{animation:none}.interes-group[aria-hidden=true]{display:none}.interes-controls{display:none}.interes-link img{transition:none}}
