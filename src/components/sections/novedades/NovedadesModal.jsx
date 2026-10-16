@@ -1,5 +1,6 @@
 // src/components/sections/Novedades/NovedadesModal.jsx
 import { Modal, Button } from 'react-bootstrap'
+import PeriodicoModal from '../novedadesContent/PeriodicoModal'
 import MicrofutbolContent from '../novedadesContent/MicrofutbolContent'
 import EleccionesContent from '../novedadesContent/EleccionesContent'
 import ConcursoContent from '../novedadesContent/ConcursoContent'
@@ -16,6 +17,7 @@ const NovedadesModal = ({
   handleSubmit
 }) => {
   if (!novedad) return null
+  if (novedad.periodico) return <PeriodicoModal key={show ? novedad.id : "cerrado"} show={show} onHide={onHide} />
 
   const renderContent = () => {
     if (novedad.contenido?.trim() || novedad.galeria?.length || !novedad.legacyTipo) {

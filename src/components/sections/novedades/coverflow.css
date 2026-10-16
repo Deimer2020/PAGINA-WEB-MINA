@@ -28,3 +28,51 @@
 .novedades-slider--coverflow .novedades-slider__pause{font-size:.8rem;min-height:40px;padding:8px 14px;background:white}
 @media(max-width:767px){.novedades-slider--coverflow{padding:8px 34px 16px;border-radius:22px}.novedades-slider--coverflow .swiper-slide{width:min(300px,calc(100vw - 120px))}.novedades-slider--coverflow .swiper-wrapper{min-height:470px}.novedades-slider--coverflow .novedad-card__image{height:340px}.novedades-slider--coverflow .swiper-slide-active .novedad-card__image{height:280px}.novedades-slider--coverflow .swiper-slide-active .novedad-card{padding:10px}.novedades-slider--coverflow .novedad-card__title{font-size:.95rem}.novedades-slider--coverflow .swiper-slide-active .novedad-card__body{padding:14px 52px 6px 5px;min-height:150px}.novedades-slider--coverflow .novedad-card__button{width:42px;min-height:42px;border-radius:12px}.novedades-slider--coverflow .novedades-slider__arrow{width:40px;min-height:40px;font-size:2rem}.novedades-slider--coverflow .novedades-slider__arrow--prev{left:0}.novedades-slider--coverflow .novedades-slider__arrow--next{right:0}}
 @media(prefers-reduced-motion:reduce){.novedades-slider--coverflow .novedad-card{transition:none}}
+
+/* Newspaper cover and full-width reading action. */
+.novedades-slider--coverflow .swiper-slide-active .novedad-card--periodico .novedad-card__image {
+  height: auto;
+  aspect-ratio: 1142 / 1600;
+  border-radius: 8px;
+  background: #fff;
+}
+.novedades-slider--coverflow .novedad-card--periodico .novedad-card__image img {
+  object-fit: contain;
+}
+.novedades-slider--coverflow .swiper-slide-active .novedad-card--periodico .novedad-card__body {
+  padding: 16px 8px 8px;
+  min-height: 0;
+  gap: 0;
+}
+.novedades-slider--coverflow .novedad-card--periodico .novedad-card__date {
+  color: #52604f;
+  font-size: .82rem;
+}
+.novedades-slider--coverflow .novedad-card--periodico .novedad-card__title {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+}
+.novedades-slider--coverflow .novedad-card--periodico .novedad-card__button {
+  position: static;
+  transform: none;
+  align-self: stretch;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 16px;
+  margin: 0;
+  gap: 12px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+  background: #215725;
+  box-shadow: 0 4px 10px rgb(20 60 25 / 16%);
+}
+.novedades-slider--coverflow .novedad-card--periodico .novedad-card__button:hover {
+  transform: none;
+  background: #173f1a;
+}
+.novedades-slider--coverflow .novedad-card--periodico .novedad-card__button span {
+  font-size: 1.25rem;
+}

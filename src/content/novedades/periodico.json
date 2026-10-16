@@ -1,0 +1,17 @@
+{
+  "titulo": "El Telar de La Mina",
+  "fecha": "20 de septiembre de 2026",
+  "descripcion": "La voz de la comunidad. Lee las 20 páginas de la edición conmemorativa de los 40 años de nuestra institución.",
+  "imagen": "/images/periodico/pagina-1.jpeg",
+  "imagenAlt": "Portada del periódico El Telar de La Mina, edición conmemorativa de los 40 años",
+  "fechaPublicacion": "2026-09-20",
+  "publicada": true,
+  "destacado": true,
+  "orden": 0,
+  "color": "#215725",
+  "contenido": "",
+  "galeria": [],
+  "imagenCompleta": true,
+  "etiqueta": "Periódico escolar",
+  "periodico": true
+}

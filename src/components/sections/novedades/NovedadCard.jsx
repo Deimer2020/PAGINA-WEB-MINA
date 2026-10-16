@@ -1,7 +1,7 @@
 import { Card, Button, Badge } from 'react-bootstrap'
 
 const NovedadCard = ({ novedad, onLeerMas, featured = false, active = true }) => (
-  <Card className={`novedad-card${featured ? ' novedad-card--featured' : ''}`}
+  <Card className={`novedad-card${featured ? ' novedad-card--featured' : ''}${novedad.periodico ? ' novedad-card--periodico' : ''}`}
     style={{ '--novedad-color': novedad.color }}>
     <div className={`novedad-card__image${novedad.imagenCompleta ? ' novedad-card__image--contain' : ''}`}>
       <img src={novedad.imagen} alt={novedad.imagenAlt} loading="lazy" decoding="async" />
@@ -19,8 +19,8 @@ const NovedadCard = ({ novedad, onLeerMas, featured = false, active = true }) =>
       {!featured && <p className="novedad-card__description">{novedad.descripcion}</p>}
       <Button variant={featured ? 'success' : 'outline-success'} className="novedad-card__button"
         onClick={() => onLeerMas(novedad.id)} tabIndex={featured && !active ? -1 : 0}
-        aria-label={`Leer más: ${novedad.titulo}`}>
-        {!featured && 'Leer más '}<span aria-hidden="true">→</span>
+        aria-label={`${novedad.periodico ? "Leer periódico" : "Leer más"}: ${novedad.titulo}`}>
+        {novedad.periodico ? 'Leer periódico ' : !featured && 'Leer más '}<span aria-hidden="true">→</span>
       </Button>
     </Card.Body>
   </Card>
