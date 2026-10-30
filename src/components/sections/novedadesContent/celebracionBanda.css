@@ -9,3 +9,9 @@
 .novedad-card--celebracion .novedad-card__image { border-top-color: #e8bf62; }
 @media (max-width: 575px) { .banda-celebracion { gap: 14px; align-items: flex-start; } .banda-celebracion__trofeo { width: 36px; height: 36px; } }
 @media (prefers-reduced-motion: reduce) { .banda-celebracion__confeti { display: none; } }
+
+.banda-celebracion__trompeta { position: absolute; top: 24%; font-size: clamp(64px, 12vw, 160px); line-height: 1.3; filter: drop-shadow(0 0 20px #e8bf6280); animation: banda-trompetas 4.6s ease-in-out both; }
+.banda-celebracion__trompeta--izquierda { left: 2%; --orientacion: -25deg; }
+.banda-celebracion__trompeta--derecha { right: 2%; --orientacion: 25deg; }
+@keyframes banda-trompetas { 0% { opacity: 0; transform: translateY(30px) scale(.4) rotate(var(--orientacion)); } 15%, 65% { opacity: 1; transform: translateY(0) scale(1) rotate(var(--orientacion)); } 35% { transform: translateY(-10px) scale(1.12) rotate(var(--orientacion)); } 100% { opacity: 0; transform: translateY(-20px) scale(.8) rotate(var(--orientacion)); } }
+@media (max-width: 575px) { .banda-celebracion__trompeta { top: auto; bottom: 12%; } }

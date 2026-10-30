@@ -12,6 +12,8 @@ const CelebracionBanda = () => {
   return (
   <div className="banda-celebracion">
     {mostrarConfeti && createPortal(<div className="banda-celebracion__confeti" aria-hidden="true">
+      <span className="banda-celebracion__trompeta banda-celebracion__trompeta--izquierda">🎺</span>
+      <span className="banda-celebracion__trompeta banda-celebracion__trompeta--derecha">🎺</span>
       {Array.from({ length: 96 }, (_, i) => <i key={i} style={{ '--x': ((i * 37) % 100) + '%', '--delay': ((i % 12) * 0.1) + 's', '--deriva': ((i % 2 ? 1 : -1) * (20 + (i * 13) % 90)) + 'px', '--giro': ((i * 47) % 360) + 'deg', '--tono': ['#e8bf62', '#fff0be', '#72c7a0', '#ffffff'][i % 4] }} />)}
     </div>, document.body)}
     <FaTrophy className="banda-celebracion__trofeo" aria-hidden="true" />
