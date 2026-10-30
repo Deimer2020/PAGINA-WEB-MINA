@@ -15,3 +15,11 @@
 .banda-celebracion__trompeta--derecha { right: 2%; --orientacion: 25deg; }
 @keyframes banda-trompetas { 0% { opacity: 0; transform: translateY(30px) scale(.4) rotate(var(--orientacion)); } 15%, 65% { opacity: 1; transform: translateY(0) scale(1) rotate(var(--orientacion)); } 35% { transform: translateY(-10px) scale(1.12) rotate(var(--orientacion)); } 100% { opacity: 0; transform: translateY(-20px) scale(.8) rotate(var(--orientacion)); } }
 @media (max-width: 575px) { .banda-celebracion__trompeta { top: auto; bottom: 12%; } }
+
+.banda-celebracion__tambor { top: auto; bottom: 8%; left: 3%; --orientacion: -12deg; }
+.banda-celebracion__platillos { top: auto; bottom: 8%; right: 3%; --orientacion: 12deg; }
+@media (max-width: 575px) {
+  .banda-celebracion__trompeta { font-size: clamp(56px, 17vw, 80px); }
+  .banda-celebracion__trompeta--izquierda, .banda-celebracion__trompeta--derecha { top: 18%; bottom: auto; }
+  .banda-celebracion__tambor, .banda-celebracion__platillos { top: auto; bottom: 8%; }
+}
