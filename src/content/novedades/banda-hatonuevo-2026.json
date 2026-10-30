@@ -1,0 +1,52 @@
+{
+  "titulo": "¡Orgullo de La Mina! Nuestra banda recibe reconocimiento a Mejor Grupo Coreográfico en Hatonuevo",
+  "fecha": "24 de octubre de 2026",
+  "fechaPublicacion": "2026-10-29",
+  "descripcion": "La Banda Cívica Marcial de la Institución Educativa Agrícola La Mina recibió el reconocimiento a Mejor Grupo Coreográfico en la modalidad Tradicional Abierta.",
+  "imagen": "/images/banda-hatonuevo-2026/reconocimiento.jpeg",
+  "imagenAlt": "Entrega del reconocimiento a Mejor Grupo Coreográfico en Hatonuevo",
+  "publicada": true,
+  "destacado": true,
+  "orden": -1,
+  "color": "#192c50",
+  "etiqueta": "Orgullo institucional",
+  "imagenCompleta": false,
+  "contenido": "La Banda Cívica Marcial de la Institución Educativa Agrícola La Mina participó en el II Concurso Nacional de Bandas de Marcha, realizado en Hatonuevo, La Guajira, donde recibió el reconocimiento a Mejor Grupo Coreográfico en la modalidad Tradicional Abierta, según el diploma fechado el 24 de octubre de 2026.\n\nEste logro celebra el talento, la disciplina y el trabajo en equipo de nuestros estudiantes, así como el acompañamiento de quienes hacen posible su formación artística.\n\n¡Felicitaciones a los integrantes de nuestra banda por representar con orgullo a la comunidad educativa!",
+  "reconocimiento": {
+    "src": "/images/banda-hatonuevo-2026/diploma.jpeg",
+    "alt": "Diploma de Mejor Grupo Coreográfico, modalidad Tradicional Abierta, II Concurso Nacional de Bandas de Marcha de Hatonuevo, 24 de octubre de 2026"
+  },
+  "galeria": [
+    {
+      "src": "/images/banda-hatonuevo-2026/delegacion.jpeg",
+      "alt": "La delegación de la Institución Educativa Agrícola La Mina con su estandarte"
+    },
+    {
+      "src": "/images/banda-hatonuevo-2026/desfile.jpeg",
+      "alt": "Integrantes de la banda durante el desfile"
+    },
+    {
+      "src": "/images/banda-hatonuevo-2026/instrumentos.jpeg",
+      "alt": "La música de nuestra banda durante el recorrido"
+    },
+    {
+      "src": "/images/banda-hatonuevo-2026/coreografia.jpeg",
+      "alt": "Integrantes del grupo coreográfico"
+    },
+    {
+      "src": "/images/banda-hatonuevo-2026/grupo.jpeg",
+      "alt": "Un recuerdo de la participación en Hatonuevo"
+    }
+  ],
+  "videos": [
+    {
+      "src": "/videos/banda-hatonuevo-2026/presentacion.mp4",
+      "poster": "/images/banda-hatonuevo-2026/coreografia.jpeg",
+      "titulo": "Nuestra banda en Hatonuevo"
+    },
+    {
+      "src": "/videos/banda-hatonuevo-2026/final.mp4",
+      "titulo": "Video final"
+    }
+  ]
+}
