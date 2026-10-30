@@ -1,5 +1,8 @@
+import CelebracionBanda from './CelebracionBanda'
+
 const NoticiaContent = ({ novedad }) => (
   <article>
+    {novedad.celebracion && <CelebracionBanda />}
     <p className="text-muted">{novedad.fecha}</p>
     {novedad.imagen && (
       <img src={novedad.imagen} alt={novedad.imagenAlt || novedad.titulo}

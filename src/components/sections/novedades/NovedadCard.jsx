@@ -1,7 +1,8 @@
+import { FaTrophy } from 'react-icons/fa'
 import { Card, Button, Badge } from 'react-bootstrap'
 
 const NovedadCard = ({ novedad, onLeerMas, featured = false, active = true }) => (
-  <Card className={`novedad-card${featured ? ' novedad-card--featured' : ''}${novedad.periodico ? ' novedad-card--periodico' : ''}`}
+  <Card className={`novedad-card${novedad.celebracion ? ' novedad-card--celebracion' : ''}${featured ? ' novedad-card--featured' : ''}${novedad.periodico ? ' novedad-card--periodico' : ''}`}
     style={{ '--novedad-color': novedad.color }}>
     <div className={`novedad-card__image${novedad.imagenCompleta ? ' novedad-card__image--contain' : ''}`}>
       <img src={novedad.imagen} alt={novedad.imagenAlt} loading="lazy" decoding="async" />
@@ -10,7 +11,7 @@ const NovedadCard = ({ novedad, onLeerMas, featured = false, active = true }) =>
       </Badge>}
     </div>
     <Card.Body className="novedad-card__body" aria-hidden={featured && !active ? true : undefined}>
-      {novedad.etiqueta && <span className="novedad-card__anniversary">{novedad.etiqueta}</span>}
+      {novedad.etiqueta && <span className="novedad-card__anniversary">{novedad.celebracion && <FaTrophy className="me-2" aria-hidden="true" />}{novedad.etiqueta}</span>}
       <div className="novedad-card__date">
         <span className="novedad-card__icon" aria-hidden="true">{novedad.icono}</span>
         <span>{novedad.fecha}</span>

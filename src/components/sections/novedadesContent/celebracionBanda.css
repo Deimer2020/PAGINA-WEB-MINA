@@ -1,0 +1,11 @@
+.banda-celebracion { position: relative; isolation: isolate; display: flex; align-items: center; gap: 20px; overflow: hidden; padding: clamp(22px, 4vw, 36px); margin-bottom: 24px; border: 1px solid #e8bf62; border-radius: 20px; color: #fff; background: radial-gradient(ellipse at top right, #455b7a, transparent 70%), #172940; }
+.banda-celebracion__trofeo { flex-shrink: 0; width: 54px; height: 54px; color: #f5cd73; filter: drop-shadow(0 3px 12px #e8bf6240); }
+.banda-celebracion__lema { color: #ffe1a0; letter-spacing: .09em; font-size: .75rem; font-weight: 800; margin-bottom: 8px; }
+.banda-celebracion h3 { color: #ffe1a0; font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 4vw, 2rem); }
+.banda-celebracion__confeti { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: -1; }
+.banda-celebracion__confeti i { position: absolute; top: -20px; left: var(--x); width: 7px; height: 12px; background: var(--tono); opacity: 0; animation: banda-confeti 3.2s var(--delay) ease-out 1 both; }
+@keyframes banda-confeti { 0% { opacity: 0; transform: translateY(-20px) rotate(0deg); } 12% { opacity: .9; } 75% { opacity: .65; } 100% { opacity: 0; transform: translateY(330px) rotate(var(--giro)); } }
+.novedad-card--celebracion .novedad-card__anniversary { color: #79530b; background: #fff0c7; border: 1px solid #e8bf62; padding: 6px 12px; border-radius: 999px; font-weight: 800; }
+.novedad-card--celebracion .novedad-card__image { border-top-color: #e8bf62; }
+@media (max-width: 575px) { .banda-celebracion { gap: 14px; align-items: flex-start; } .banda-celebracion__trofeo { width: 36px; height: 36px; } }
+@media (prefers-reduced-motion: reduce) { .banda-celebracion__confeti { display: none; } }

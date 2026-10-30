@@ -9,7 +9,7 @@
   "destacado": true,
   "orden": -1,
   "color": "#192c50",
-  "etiqueta": "Orgullo institucional",
+  "etiqueta": "¡Estamos de celebración!",
   "imagenCompleta": false,
   "contenido": "La Banda Cívica Marcial de la Institución Educativa Agrícola La Mina participó en el II Concurso Nacional de Bandas de Marcha, realizado en Hatonuevo, La Guajira, donde recibió el reconocimiento a Mejor Grupo Coreográfico en la modalidad Tradicional Abierta, según el diploma fechado el 24 de octubre de 2026.\n\nEste logro celebra el talento, la disciplina y el trabajo en equipo de nuestros estudiantes, así como el acompañamiento de quienes hacen posible su formación artística.\n\n¡Felicitaciones a los integrantes de nuestra banda por representar con orgullo a la comunidad educativa!",
   "reconocimiento": {
@@ -48,5 +48,6 @@
       "src": "/videos/banda-hatonuevo-2026/final.mp4",
       "titulo": "Video final"
     }
-  ]
+  ],
+  "celebracion": true
 }
